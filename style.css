@@ -186,16 +186,19 @@ header h1 {
   line-height: 1.8;
 }
 
+.desktop-br {
+  display: inline; /* デスクトップでは表示して改行効果を発揮 */
+}
 
-/* レスポンシブ調整 */
+/* スマホ用（画面幅768px以下）の調整 */
 @media screen and (max-width: 768px) {
+  .desktop-br {
+    display: none;  /* スマホでは明示的な改行は非表示に */
+  }
   .hero-left h1 {
     font-size: 2.5rem;
   }
   .hero-left p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
-
-     
-    }
