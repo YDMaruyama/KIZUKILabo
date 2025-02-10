@@ -60,20 +60,24 @@ section {
 /* 5. ヒーローセクション */
 /* ※ここから先程の背景効果を含むヒーローセクション用の設定 */
 header {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  /* 背景は、下段に波のパターン、中央に放射状グラデーション、全体にパステルブルーのリニアグラデーションを重ねています */
-  background: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.3' d='M0,192L48,202.7C96,213,192,235,288,250.7C384,267,480,277,576,261.3C672,245,768,203,864,181.3C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom,
-    radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 60%),
-    linear-gradient(135deg, #F3F9FF, #D9EFFF);
-  background-blend-mode: screen;
-}
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      /* 背景レイヤー：
+           (1) 下段に波のパターン（SVG、fill-opacity を 0.8 に設定）
+           (2) 中央から輝く放射状グラデーション
+           (3) 柔らかなパステルブルーのリニアグラデーション
+         これらを background-blend-mode: screen; で融合 */
+      background: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.8' d='M0,192L48,202.7C96,213,192,235,288,250.7C384,267,480,277,576,261.3C672,245,768,203,864,181.3C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom,
+        radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 60%),
+        linear-gradient(135deg, #F3F9FF, #D9EFFF);
+      background-blend-mode: screen;
+    }
 
 /* ヒーロー背景にパルス効果を与えるオーバーレイ */
 header::after {
