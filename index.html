@@ -35,19 +35,7 @@
     linear-gradient(135deg, #F3F9FF, #D9EFFF);
   background-blend-mode: screen;
 }
-    header::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0));
-  transform: translate(-50%, -50%);
-  opacity: 0.6;
-  z-index: 0;
-  animation: pulse 4s infinite ease-in-out;
-}
+    
     /* 背景に控えめなSVGパターンをオーバーレイ */
     body::before {
       content: "";
@@ -118,7 +106,19 @@ header {
     linear-gradient(135deg, #F3F9FF, #D9EFFF);
   background-blend-mode: screen;
 }
-
+header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0));
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+  z-index: 0;
+  animation: pulse 4s infinite ease-in-out;
+}
 header::before {
   content: "";
   position: absolute;
