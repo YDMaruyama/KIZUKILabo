@@ -2,139 +2,276 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>AIセミナーLP</title>
+  <title>Yappli UNITE風LPファーストビュー</title>
   <style>
-    /* リセット */
+    /* ------------------------------
+       RESET
+    ------------------------------ */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
       color: #333;
     }
 
-    /* ファーストビュー（ヒーローセクション） */
-    .hero-section {
-      position: relative;
+    /* ------------------------------
+       ヘッダーのナビゲーション例
+       （固定ヘッダー想定：簡易的に作成）
+    ------------------------------ */
+    header {
       width: 100%;
-      min-height: 100vh;
-      /* 背景色 or 背景画像を設定 */
-      background: linear-gradient(135deg, #e0e0e0, #fafafa);
+      height: 60px;
+      background-color: #fff;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 40px 20px;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
     }
-
-    .hero-section h1 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+    header .logo img {
+      height: 30px; /* 実際のロゴサイズに合わせて調整 */
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      text-decoration: none;
       color: #333;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.7;
     }
 
-    .hero-section h2 {
-      font-size: 1.3rem;
-      color: #666;
-      margin-bottom: 30px;
+    /* ------------------------------
+       ファーストビューのヒーローセクション
+    ------------------------------ */
+    .hero {
+      width: 100%;
+      min-height: 90vh;
+      background-color: #56c0b5; /* ミントグリーン/ティール系 */
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      overflow: hidden;
     }
 
-    .hero-section p {
+    /* hero 内のコンテンツを横並びにする */
+    .hero-container {
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* 左カラム */
+    .hero-left {
+      flex: 1;
+      color: #fff;
+      position: relative;
+    }
+    .hero-left .sub-text {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .hero-left .main-text {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+      font-weight: bold;
+    }
+    .hero-left .desc-text {
       font-size: 1rem;
-      max-width: 700px;
-      margin: 0 auto 40px auto;
-      line-height: 1.8;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 400px;
+    }
+
+    /* 縦書き擬似表現（テキストを90度回転させる） */
+    .vertical-text {
+      position: absolute;
+      top: 50px;
+      left: -70px; 
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      font-size: 1rem;
+      color: #fff;
+      opacity: 0.8;
+      line-height: 2;
     }
 
     /* CTAボタン */
     .cta-button {
       display: inline-block;
       padding: 15px 30px;
-      background-color: #ff6600;
+      background-color: #000;
       color: #fff;
+      font-size: 1rem;
       text-decoration: none;
-      font-size: 1.1rem;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 6px;
+      transition: opacity 0.2s, background-color 0.2s;
     }
     .cta-button:hover {
-      background-color: #e65c00;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      background-color: #333;
     }
 
-    /* スクロール用のアイコン、または矢印など（必要に応じて） */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9rem;
-      color: #888;
-      cursor: pointer;
-      opacity: 0.7;
+    /* HRアワードバッジなどを想定した要素 */
+    .award-badge {
+      margin-top: 15px;
+      display: inline-block;
     }
-    .scroll-indicator:hover {
-      opacity: 1;
-      text-decoration: underline;
+    .award-badge img {
+      width: 80px;
+      height: auto;
     }
 
-    /* スマホ対応 */
-    @media screen and (max-width: 768px) {
-      .hero-section h1 {
-        font-size: 1.8rem;
+    /* 右カラム（人物やスマホUIなど） */
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-right img {
+      max-height: 70vh; /* 画像高さをビューポートに対して適宜調整 */
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    /* 企業ロゴを横並びに表示 */
+    .logo-section {
+      width: 100%;
+      background-color: #fff;
+      padding: 20px 0;
+    }
+    .logo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+    .logo-container img {
+      height: 40px; /* 実際のロゴに合わせて調整 */
+      object-fit: contain;
+    }
+
+    /* レスポンシブ対応 */
+    @media screen and (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
       }
-      .hero-section h2 {
-        font-size: 1.1rem;
+      .hero-right {
+        margin-top: 30px;
       }
-      .hero-section p {
-        font-size: 0.95rem;
+      .vertical-text {
+        display: none; /* 縦書きテキストはスマホでは非表示 */
+      }
+      .hero-left .main-text {
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ファーストビューセクション -->
-  <section class="hero-section">
-    <!-- タイトル -->
-    <h1>AIに使われないための思考術</h1>
-    <!-- サブタイトル -->
-    <h2>AI時代の幕開けと、あなたの本質的な価値を探る―</h2>
-    <!-- リードコピー -->
-    <p>
-      世はまさに「知のゴールドラッシュ」が到来中。<br>
-      AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
-      本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
-    </p>
-    <!-- CTAボタン -->
-    <a href="#entry-form" class="cta-button">今すぐセミナーに申し込む</a>
+<header>
+  <div class="logo">
+    <!-- ↓ロゴ画像は適宜差し替え -->
+    <img src="https://via.placeholder.com/100x30?text=Yappli+UNITE" alt="Logo">
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#">Yappli UNITEでできること</a></li>
+      <li><a href="#">活用事例</a></li>
+      <li><a href="#">導入の特長</a></li>
+      <li><a href="#">料金体系</a></li>
+      <li><a href="#">お問い合わせ</a></li>
+      <li><a href="#">資料ダウンロード</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- 必要に応じて下部にスクロール誘導などを表示 -->
-    <div class="scroll-indicator" onclick="scrollToContent()">
-      ▼ Scroll Down
+<section class="hero">
+  <div class="hero-container">
+    <!-- 左カラム -->
+    <div class="hero-left">
+      <!-- 縦方向のキャッチコピー（装飾用） -->
+      <div class="vertical-text">
+        ビジョン浸透<br>
+        人材育成<br>
+        リスキリング<br>
+        インナーブランディング
+      </div>
+
+      <div class="sub-text">社内ポータルアプリで情報集約。</div>
+      <h1 class="main-text">
+        どこからでもアクセスできて<br>
+        業務を効率化。
+      </h1>
+      <p class="desc-text">
+        Yappli UNITEでイキイキとした組織づくりを。<br>
+        3分でわかる資料を今すぐダウンロード！
+      </p>
+      <a href="#download" class="cta-button">
+        資料ダウンロード
+      </a>
+
+      <!-- HRアワードバッジのイメージをサンプルで表示 -->
+      <div class="award-badge">
+        <img src="https://via.placeholder.com/80?text=HR+Award" alt="HR Award">
+      </div>
     </div>
-  </section>
 
-  <!-- 以下、セミナー概要など他セクションを配置 -->
-  <section id="entry-form" style="padding: 60px 20px;">
-    <h2>お申し込みフォーム</h2>
-    <!-- フォームや詳細情報など -->
-    <p>ここにフォームや詳細を配置します。</p>
-  </section>
+    <!-- 右カラム（人物写真など） -->
+    <div class="hero-right">
+      <!-- こちらも人物写真を置く。著作権画像なのでPlaceholderで代用 -->
+      <img src="https://via.placeholder.com/500x700?text=Person+Image" alt="Person">
+    </div>
+  </div>
+</section>
 
-  <script>
-    // 下部セクションへスクロールするサンプル関数
-    function scrollToContent() {
-      const element = document.getElementById('entry-form');
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  </script>
+<!-- 企業ロゴ群セクション -->
+<section class="logo-section">
+  <div class="logo-container">
+    <!-- ここに各企業ロゴを並べる。サンプルPlaceholderです -->
+    <img src="https://via.placeholder.com/100x40?text=KIRIN" alt="KIRIN">
+    <img src="https://via.placeholder.com/120x40?text=TOYOTA" alt="トヨタ自動車労働組合">
+    <img src="https://via.placeholder.com/100x40?text=AsahiKASEI" alt="旭化成アミダス">
+    <img src="https://via.placeholder.com/100x40?text=ORIX" alt="ORIX">
+    <img src="https://via.placeholder.com/120x40?text=SUMITOMO" alt="住友ゴム労働組合">
+    <img src="https://via.placeholder.com/120x40?text=Workman" alt="WORKMAN">
+    <img src="https://via.placeholder.com/100x40?text=DUSKIN" alt="DUSKIN">
+    <img src="https://via.placeholder.com/80x40?text=ORBIS" alt="ORBIS">
+  </div>
+</section>
+
+<!-- ダウンロードセクション仮置き -->
+<section id="download" style="padding: 40px; background-color: #f5f5f5;">
+  <h2>3分でわかる資料ダウンロード</h2>
+  <p>資料ダウンロード用のフォームや詳細をここに配置...</p>
+</section>
 
 </body>
 </html>
