@@ -562,6 +562,16 @@ header p {
       <p>初心者から上級者まで、実践的なプログラミング学習をサポートします</p>
       <button class="cta-btn" onclick="scrollToSection('about')">今すぐ始める</button>
     </div>
+      <!-- 波のアニメーション -->
+    <div class="wave"></div>
+    <!-- 粒子アニメーション -->
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
   </header>
  
   <!-- プラットフォーム紹介／ストーリー セクション -->
@@ -842,7 +852,11 @@ setInterval(nextTestimonialSet, 7000);
     opacity: 0.8;
   }
 }
-
+    
+function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    
   </script>
 </body>
 </html>
