@@ -2,749 +2,139 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PROGATE - プログラミング学習で未来を切り拓く</title>
-  <!-- Google Fonts: Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <title>AIセミナーLP</title>
   <style>
-  /* 1. カラーパレットと基本設定 */
-:root {
-  --primary-color: #4A90E2;  /* 青 */
-  --accent-color: #FF6F61;   /* オレンジ系 */
-  --bg-color: #fff;
-  --light-gray: #f7f7f7;
-  --text-color: #333;
-  --overlay-color: rgba(0,0,0,0.6);
-}
+    /* リセット */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* 2. リセット */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
-/* 3. 全体のフォント・カラー設定 & ボディ背景（シンプルな背景＋SVGパターンオーバーレイ） */
-body {
-  font-family: 'Roboto', sans-serif;
-  color: var(--text-color);
-  background: var(--bg-color);
-  line-height: 1.6;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* 控えめなオレンジ色の円パターン */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='3' fill='%23FF6F61' opacity='0.3'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  opacity: 0.2;
-  z-index: -1;
-}
-
-/* 4. コンテナ・セクション共通 */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-section {
-  padding: 80px 0;
-}
-
-/* 5. ヒーローセクション */
-/* ※ここから先程の背景効果を含むヒーローセクション用の設定 */
-header {
+    /* ファーストビュー（ヒーローセクション） */
+    .hero-section {
       position: relative;
-      height: 100vh;
+      width: 100%;
+      min-height: 100vh;
+      /* 背景色 or 背景画像を設定 */
+      background: linear-gradient(135deg, #e0e0e0, #fafafa);
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      overflow: hidden;
-      /* 背景レイヤー：
-           (1) 下段に波のパターン（SVG、fill-opacity を 0.8 に設定）
-           (2) 中央から輝く放射状グラデーション
-           (3) 柔らかなパステルブルーのリニアグラデーション
-         これらを background-blend-mode: screen; で融合 */
-      background: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.9' d='M0,192L48,202.7C96,213,192,235,288,250.7C384,267,480,277,576,261.3C672,245,768,203,864,181.3C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom,
-    radial-gradient(circle at center, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0) 60%),
-    linear-gradient(135deg, #D0E4FF, #B0D6FF);
-      background-blend-mode: screen;
+      padding: 40px 20px;
     }
-    
 
-/* ヒーロー背景にパルス効果を与えるオーバーレイ */
-header::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0));
-  transform: translate(-50%, -50%);
-  opacity: 0.6;
-  z-index: 0;
-  animation: pulse 4s infinite ease-in-out;
-}
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.6;
+    .hero-section h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #333;
     }
-    50% {
-      transform: translate(-50%, -50%) scale(1.05);
-      opacity: 0.8;
+
+    .hero-section h2 {
+      font-size: 1.3rem;
+      color: #666;
+      margin-bottom: 30px;
     }
-  }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='3' fill='%23FF6F61' opacity='0.3'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  opacity: 0.2;
-  z-index: -1;
-}
-
-/* ヒーローコンテンツ */
-header .hero-content {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  padding: 20px;
-}
-
-header h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-header p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-}
-
-/* CTAボタン */
-.cta-btn {
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.cta-btn:hover {
-  background: #e65d53;
-  transform: scale(1.05);
-}
-
-    
-    /* セクションタイトル */
-    .section-title {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 2.5rem;
-      font-weight: 500;
-      color: var(--primary-color);
-    }
-    
-    p {
-      font-size: 1.1rem;
+    .hero-section p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
       line-height: 1.8;
     }
-    
-    /* PROGATEとは */
-    #about {
-      background: var(--light-gray);
-    }
-    #about .content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    /* PROGATEの特徴 */
-    #features {
-      background: var(--bg-color);
-    }
-    .feature-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 0 20px;
-    }
-    .feature-item {
-      background: var(--light-gray);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    .feature-item:hover {
-      transform: translateY(-5px);
-    }
-    .feature-item h3 {
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-      color: var(--primary-color);
-    }
-    
-    /* コース内容（横一列：1行5列＆ギザギザ配置） */
-    #courses {
-      background: var(--light-gray);
-    }
-    .course-list {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 30px;
-      padding: 0 20px;
-    }
-    .course-item {
-      background: var(--bg-color);
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    /* ギザギザ配置：奇数番目は上方向、偶数番目は下方向にオフセット */
-    .course-item:nth-child(odd) {
-      transform: translateY(-20px);
-    }
-    .course-item:nth-child(even) {
-      transform: translateY(20px);
-    }
-    .course-item:hover {
-      transform: translateY(0);
-    }
-    .course-item h4 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-      color: var(--primary-color);
-    }
-    
-    /* 利用価格表 */
-    #pricing {
-      background: var(--bg-color);
-    }
-    .pricing-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 0 auto;
-      max-width: 800px;
-    }
-    .pricing-table th,
-    .pricing-table td {
-      padding: 20px;
-      border: 1px solid #ddd;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    .pricing-table th {
-      background: var(--primary-color);
+
+    /* CTAボタン */
+    .cta-button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #ff6600;
       color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
-    
-  /* 口コミセクション全体 */
-#testimonials {
-  background: var(--light-gray);
-}
+    .cta-button:hover {
+      background-color: #e65c00;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
 
-/* 口コミスライダーコンテナ */
-.testimonial-slider {
-  position: relative;
-  overflow: hidden;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  min-height: 380px;  /* セット全体の高さ（口コミカードの高さに合わせる） */
-}
+    /* スクロール用のアイコン、または矢印など（必要に応じて） */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+    .scroll-indicator:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
 
-/* 各口コミセット：横に3カード並び */
-.testimonial-set {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transform: translateX(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* アクティブなセットは表示 */
-.testimonial-set.active {
-  opacity: 1;
-  position: relative;
-}
-
-/* キーフレーム：左へスライド＆フェードアウト */
-@keyframes fadeOutLeft {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-}
-
-/* キーフレーム：右からスライドイン＆フェードイン */
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* 出る時のアニメーション */
-.testimonial-set.exit {
-  animation: fadeOutLeft 0.5s forwards;
-}
-
-/* 入る時のアニメーション */
-.testimonial-set.enter {
-  animation: fadeInRight 0.5s forwards;
-}
-
-/* 各口コミカード */
-.testimonial {
-  background: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  border-radius: 10px;
-  text-align: center;
-  flex: 1;
-  max-width: 32%;  /* 3カードが横に並ぶ */
-}
-.testimonial img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 15px;
-  display: block;
-}
-.testimonial-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: var(--primary-color);
-}
-.testimonial-text {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: var(--text-color);
-}
-
-/* レスポンシブ対応 */
-@media (max-width: 992px) {
-  .testimonial-set {
-    flex-direction: column;
-    align-items: center;
-  }
-  .testimonial {
-    max-width: 80%;
-  }
-}
-
-
-/* レスポンシブ：画面幅が狭い場合 */
-@media (max-width: 992px) {
-  .testimonial-set {
-    flex-direction: column;
-    align-items: center;
-  }
-  .testimonial {
-    max-width: 80%;
-  }
-}
-
-    
-    /* CTAセクション */
-#cta {
-  /* グラデーション背景で印象的に */
-  background: linear-gradient(135deg, #4A90E2, #50E3C2);
-  color: #fff;
-  text-align: center;
-  padding: 80px 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* 背景に薄い斜めのオーバーレイを追加（動的な印象） */
-#cta::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.05);
-  transform: rotate(45deg);
-}
-
-/* コンテナはオーバーレイより前面に表示 */
-#cta .container {
-  position: relative;
-  z-index: 1;
-}
-
-/* CTAタイトル */
-#cta .cta-title {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* CTAサブタイトル */
-#cta .cta-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 40px;
-  line-height: 1.5;
-}
-
-/* CTAボタン（アクセントカラー・拡大アニメーション） */
-#cta .cta-btn {
-  background: #FF6F61; /* アクセントカラー */
-  color: #fff;
-  display: inline-block;
-  padding: 20px 40px;
-  font-size: 1.2rem;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
-  /* 中央揃え（親要素のtext-align: center; と組み合わせ） */
-  margin: 0 auto;
-}
-#cta .cta-btn:hover {
-  background: #e65d53;
-  transform: scale(1.05);
-}
-
-    
-    /* レスポンシブ（画面幅が狭い場合は自動的に列数を減らす） */
-    @media (max-width: 992px) {
-      .course-list {
-        grid-template-columns: repeat(3, 1fr);
+    /* スマホ対応 */
+    @media screen and (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.8rem;
       }
-    }
-    @media (max-width: 600px) {
-      .course-list {
-        grid-template-columns: 1fr;
+      .hero-section h2 {
+        font-size: 1.1rem;
+      }
+      .hero-section p {
+        font-size: 0.95rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ヒーローセクション -->
-  <header id="hero">
-    <div class="hero-content">
-      <h1>PROGATEへようこそ</h1>
-      <p>初心者から上級者まで、実践的なプログラミング学習をサポートします</p>
-      <button class="cta-btn" onclick="scrollToSection('about')">今すぐ始める</button>
-    </div>
-     
-  </header>
- 
-  <!-- プラットフォーム紹介／ストーリー セクション -->
-<section id="platform-story">
-  <div class="container">
-    <div class="story-content">
-      <div class="story-text">
-        <h2 class="section-title">私たちのストーリー</h2>
-        <p class="story-mission">
-          PROGATEは、すべての人にプログラミングの楽しさと無限の可能性を届けるために生まれました。最先端の技術と革新的な教育手法を組み合わせ、学習者が自分のペースでスキルを磨ける環境を提供しています。
-        </p>
-        <p class="story-description">
-          私たちのミッションは、技術の力で未来を切り拓くこと。受講者の成功事例やキャリアチェンジの実績は、私たちの情熱と取り組みの証です。共に学び、成長し、夢を実現するためのストーリーをぜひご覧ください。
-        </p>
-      </div>
-      <div class="story-image">
-        <img src="https://via.placeholder.com/600x400" alt="私たちのストーリー">
-      </div>
-    </div>
-  </div>
-</section>
-  
-  <!-- PROGATEとは -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">PROGATEとは</h2>
-      <div class="content">
-        <p>
-          PROGATEは、オンラインで手軽にプログラミングを学べるプラットフォームです。  
-          初心者でも安心して学習できるよう、分かりやすいレッスンと実践的な演習問題を多数用意しています。  
-          自分のペースで学びながら、プログラミングの基礎から応用までしっかりと習得できる環境を提供します。
-        </p>
-      </div>
+  <!-- ファーストビューセクション -->
+  <section class="hero-section">
+    <!-- タイトル -->
+    <h1>AIに使われないための思考術</h1>
+    <!-- サブタイトル -->
+    <h2>AI時代の幕開けと、あなたの本質的な価値を探る―</h2>
+    <!-- リードコピー -->
+    <p>
+      世はまさに「知のゴールドラッシュ」が到来中。<br>
+      AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
+      本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
+    </p>
+    <!-- CTAボタン -->
+    <a href="#entry-form" class="cta-button">今すぐセミナーに申し込む</a>
+
+    <!-- 必要に応じて下部にスクロール誘導などを表示 -->
+    <div class="scroll-indicator" onclick="scrollToContent()">
+      ▼ Scroll Down
     </div>
   </section>
 
-  <!-- 講師・スタッフ紹介 -->
-  <section id="instructors">
-講師やサポートスタッフの紹介 
- </section>
-  
-  <!-- 実績・統計データ -->
-  <section id="statistics">
-数字やインフォグラフィックで実績を紹介 
-  </section>
-  
-  <!-- PROGATEの特徴 -->
-  <section id="features">
-    <div class="container">
-      <h2 class="section-title">PROGATEの特徴</h2>
-      <div class="feature-list">
-        <div class="feature-item">
-          <h3>スライド形式のレッスン</h3>
-          <p>視覚的に分かりやすいスライドで、段階的に学べます。</p>
-        </div>
-        <div class="feature-item">
-          <h3>インタラクティブな実践問題</h3>
-          <p>実際にコードを書いて、即座に結果を確認できる環境を提供。</p>
-        </div>
-        <div class="feature-item">
-          <h3>初心者向けの分かりやすい解説</h3>
-          <p>専門用語を極力使わず、誰でも理解できる解説が魅力です。</p>
-        </div>
-        <div class="feature-item">
-          <h3>無料で始められる</h3>
-          <p>まずは無料プランから、気軽にプログラミング学習を体験してください。</p>
-        </div>
-      </div>
-    </div>
+  <!-- 以下、セミナー概要など他セクションを配置 -->
+  <section id="entry-form" style="padding: 60px 20px;">
+    <h2>お申し込みフォーム</h2>
+    <!-- フォームや詳細情報など -->
+    <p>ここにフォームや詳細を配置します。</p>
   </section>
 
-  <!-- コース内容（横一列：1行5列＆ギザギザ配置） -->
-  <section id="courses">
-    <div class="container">
-      <h2 class="section-title">コース内容</h2>
-      <div class="course-list">
-        <div class="course-item">
-          <h4>HTML &amp; CSS</h4>
-          <p>ウェブサイト作成の基本となるHTMLとCSSの基礎を学びます。</p>
-        </div>
-        <div class="course-item">
-          <h4>JavaScript</h4>
-          <p>動的なウェブサイト作成のためのプログラミング言語を習得。</p>
-        </div>
-        <div class="course-item">
-          <h4>Ruby</h4>
-          <p>シンプルで直感的な文法のRubyを使った開発の基礎を学びます。</p>
-        </div>
-        <div class="course-item">
-          <h4>Python</h4>
-          <p>幅広い用途に利用されるPythonの基礎から応用までをカバー。</p>
-        </div>
-        <div class="course-item">
-          <h4>Java</h4>
-          <p>大規模システム開発でよく使用されるJavaの基本と応用技術を習得。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
- <!-- ユーザー事例／成功ストーリー -->
-  <section id="success-stories">
-    <!-- 具体的な受講者の成功事例紹介 -->
-  </section>
-  
-  <!-- 利用価格表 -->
-  <section id="pricing">
-    <div class="container">
-      <h2 class="section-title">利用価格表</h2>
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>プラン</th>
-            <th>月額料金</th>
-            <th>特徴</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>無料プラン</td>
-            <td>¥0</td>
-            <td>一部レッスンが無料で利用可能</td>
-          </tr>
-          <tr>
-            <td>プレミアムプラン</td>
-            <td>¥980</td>
-            <td>全てのレッスンと機能が利用可能</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    よくある質問と回答
-  </section>
-  
-  <!-- コミュニティ・サポート情報 -->
-  <section id="community-support">
- サポート体制、コミュニティ情報の紹介 
-  </section>
-
-  <!-- ニュースレター登録／最新情報 -->
-  <section id="newsletter">
-メール登録フォーム、最新情報のお知らせ
-  </section>
-  
-  <!-- ソーシャルメディア連携 -->
-  <section id="social-media">
- 公式SNSリンク、最新投稿の埋め込みなど
-  </section>
-  
-  
-<!-- 参加者の口コミセクション -->
-<section id="testimonials">
-  <div class="container">
-    <h2 class="section-title">参加者の口コミ</h2>
-    <div class="testimonial-slider">
-      <!-- セット1 -->
-      <div class="testimonial-set active">
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="山田 太郎">
-          <h3 class="testimonial-title">山田 太郎</h3>
-          <p class="testimonial-text">"このプラットフォームで学んだおかげで、実践的なスキルが身につきました！"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="佐藤 花子">
-          <h3 class="testimonial-title">佐藤 花子</h3>
-          <p class="testimonial-text">"とても分かりやすいレッスンで、プログラミングの楽しさを実感しています。"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="鈴木 次郎">
-          <h3 class="testimonial-title">鈴木 次郎</h3>
-          <p class="testimonial-text">"現場での経験豊富な講師の解説が、理解を深める大きな助けとなりました。"</p>
-        </div>
-      </div>
-      <!-- セット2 -->
-      <div class="testimonial-set">
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="小林 真一">
-          <h3 class="testimonial-title">小林 真一</h3>
-          <p class="testimonial-text">"オンラインでも安心して学べる環境が整っており、成長を実感できます。"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="斎藤 智子">
-          <h3 class="testimonial-title">斎藤 智子</h3>
-          <p class="testimonial-text">"実体験に基づいた演習が、即戦力のスキルアップに役立ちました。"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="高橋 美咲">
-          <h3 class="testimonial-title">高橋 美咲</h3>
-          <p class="testimonial-text">"サポートが充実しているため、初心者でも安心して取り組めます。"</p>
-        </div>
-      </div>
-      <!-- セット3 -->
-      <div class="testimonial-set">
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="松本 翔">
-          <h3 class="testimonial-title">松本 翔</h3>
-          <p class="testimonial-text">"分かりやすい解説と実践的な課題で、スキルを着実に伸ばすことができました。"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="伊藤 優子">
-          <h3 class="testimonial-title">伊藤 優子</h3>
-          <p class="testimonial-text">"知識だけでなく、実務に直結する内容が魅力です。コミュニティも素晴らしい！"</p>
-        </div>
-        <div class="testimonial">
-          <img src="https://via.placeholder.com/100" alt="中村 健太">
-          <h3 class="testimonial-title">中村 健太</h3>
-          <p class="testimonial-text">"実体験に基づくレッスンで、即戦力となるスキルを身につけました。"</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- CTAセクション -->
-<section id="cta">
-  <div class="container">
-    <h2 class="cta-title">あなたの未来を今すぐ変えよう！</h2>
-    <p class="cta-subtitle">無料で登録して、最新のプログラミングスキルを手に入れましょう。<br>
-      あなたの夢に向かって、第一歩を踏み出してください。</p>
-    <button class="cta-btn" onclick="scrollToSection('about')">無料登録はこちら</button>
-  </div>
-</section>
-
-<!-- フッター -->
-  <footer id="footer">
-    <!-- 会社情報、利用規約、プライバシーポリシー、問い合わせ先 -->
-  </footer>
-
-  
-<script>
-
-  // 口コミセットの自動切替（左スライド＆フェードアウト、右スライド＆フェードインのアニメーション付き）
-  document.addEventListener("DOMContentLoaded", function() {
-    let currentSet = 0;
-    const testimonialSets = document.querySelectorAll('.testimonial-set');
-    const totalSets = testimonialSets.length;
-    
-    function nextTestimonialSet() {
-      const current = testimonialSets[currentSet];
-      // 現在のセットに退出アニメーションを適用
-      current.classList.add('exit');
-
-      // 退出アニメーションが終わるのを待ってから切り替え（0.5秒後）
-      setTimeout(() => {
-        current.classList.remove('active', 'exit');
-        // 次のセットのインデックスを計算
-        currentSet = (currentSet + 1) % totalSets;
-        const next = testimonialSets[currentSet];
-        // 次のセットに入場アニメーションを適用
-        next.classList.add('enter', 'active');
-        // 入場アニメーション終了後、enterクラスを削除（0.5秒後）
-        setTimeout(() => {
-          next.classList.remove('enter');
-        }, 500);
-      }, 500);
+  <script>
+    // 下部セクションへスクロールするサンプル関数
+    function scrollToContent() {
+      const element = document.getElementById('entry-form');
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+      });
     }
+  </script>
 
-    // 7秒ごとに口コミセットを切り替え
-    setInterval(nextTestimonialSet, 7000);
-  });
-
-  
-</script>
 </body>
 </html>
