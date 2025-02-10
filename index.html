@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>AIセミナーLPファーストビュー</title>
+  <title>AIセミナーLP ファーストビュー（右側に動くアイコン, 背景透明）</title>
   <style>
     /* ------------------------------
        RESET
@@ -15,10 +15,11 @@
     body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
       color: #333;
+      background-color: #f5f5f5;
     }
 
     /* ------------------------------
-       ヘッダーのナビゲーション例
+       ヘッダー
     ------------------------------ */
     header {
       width: 100%;
@@ -32,12 +33,8 @@
       position: relative;
       z-index: 10;
     }
-    header .logo {
-      display: flex;
-      align-items: center;
-    }
     header .logo img {
-      height: 30px; 
+      height: 30px;
     }
     nav ul {
       list-style: none;
@@ -55,36 +52,38 @@
     }
 
     /* ------------------------------
-       ファーストビューのヒーローセクション
+       ファーストビュー（ヒーローセクション）
     ------------------------------ */
     .hero {
       width: 100%;
       min-height: 90vh;
-      background-color: #56c0b5; /* ミントグリーン/ティール系 */
-      position: relative;
+      background-color: #56c0b5;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       padding: 60px 20px;
       overflow: hidden;
     }
-
     .hero-container {
       display: flex;
+      flex-wrap: wrap; /* 狭い画面では縦並びになるように */
       max-width: 1200px;
       width: 100%;
       gap: 20px;
-      align-items: center;
+      align-items: stretch; 
       justify-content: space-between;
     }
 
-   hero-left {
+    /* 左カラム：テキスト */
+    .hero-left {
       flex: 1;
+      min-width: 300px;
       color: #fff;
       position: relative;
+      z-index: 2; /* アイコンより前面に表示 */
       display: flex;
       flex-direction: column;
-      justify-content: center; /* 垂直方向で中央寄せ */
+      justify-content: center;
     }
     .hero-left .sub-text {
       font-size: 1.2rem;
@@ -103,112 +102,61 @@
       line-height: 1.8;
       max-width: 500px;
     }
-    /* CTAボタン */
     .cta-button {
       display: inline-block;
-      padding: 15px 30px;
-      background-color: #000;
+      padding: 8px 16px;
+      text-align: center;
+      background-color: #ff6600;
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.9rem;
       text-decoration: none;
-      border-radius: 6px;
-      transition: opacity 0.2s, background-color 0.2s;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
     .cta-button:hover {
-      background-color: #333;
+      background-color: #e65c00;
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    /* 右カラム（人物画像など） */
+    /* 右カラム：ランダムアイコン配置 */
     .hero-right {
       flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      min-width: 300px;
       position: relative;
-    }
-    .hero-right img {
-      max-height: 70vh;
-      width: auto;
-      object-fit: contain;
-      border-radius: 6px;
+      height: 500px;  /* 固定高さでJSのサイズ取得を安定させる */
+      overflow: hidden;
     }
 
-    /* 企業ロゴを横並びに表示（例示的に残しています） */
-    .logo-section {
-      width: 100%;
-      background-color: #fff;
-      padding: 20px 0;
-    }
-    .logo-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-    }
-    .logo-container img {
-      height: 40px;
-      object-fit: contain;
-    }
-
-    /* レスポンシブ対応 */
-    @media screen and (max-width: 992px) {
-      .hero-container {
-        flex-direction: column;
-      }
-      .hero-right {
-        margin-top: 30px;
-      }
-      .vertical-text {
-        display: none; /* スマホ時は隠す */
-      }
-      .hero-left .main-text {
-        font-size: 1.6rem;
-      }
-    }
-
-/* ランダム配置するコンテナ */
-    .ai-icons-container {
-      position: relative;
-      width: 100%;
-      height: 600px; /* 必要に応じて高さを調整 */
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden; /* アイコンがはみ出ないように */
-    }
-
-    /* アイコン用カード */
+    /* ----- アイコン用CSS ----- */
     .icon-card {
-      position: absolute; /* ランダム配置のため absolute */
+      position: absolute;
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: #f0f0f0;
+      background-color: transparent;
+      border: 2px solid rgba(255,255,255,0.5);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transform: scale(1); /* 通常時は100% */
       transition: transform 0.2s;
     }
     .icon-card:hover {
-      transform: scale(1.1);
-      z-index: 999; /* ホバー時手前に */
+      transform: scale(1.1); /* ホバー時に拡大 */
+      z-index: 999;
     }
-
-    /* カード内のアイコン画像 */
     .icon-card img {
       width: 32px;
       height: 32px;
     }
 
-    /* ツールチップ（名称・説明） */
+    /* ツールチップ */
     .tooltip {
       position: absolute;
-      bottom: 70px; /* アイコンの真上に表示 */
+      bottom: 70px;
       left: 50%;
       transform: translateX(-50%);
       min-width: 120px;
@@ -218,7 +166,6 @@
       border-radius: 4px;
       font-size: 0.8rem;
       text-align: center;
-      white-space: normal;
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.2s;
@@ -226,26 +173,35 @@
     .icon-card:hover .tooltip {
       opacity: 1;
     }
-
-    /* ツールチップの三角形 */
     .tooltip::before {
       content: "";
       position: absolute;
-      bottom: -6px; /* ツールチップの下部中央に三角形 */
+      bottom: -6px;
       left: 50%;
       transform: translateX(-50%);
       border: 6px solid transparent;
       border-top-color: rgba(0,0,0,0.8);
     }
-    
+
+    /* ------------------------------
+       レスポンシブ対応
+    ------------------------------ */
+    @media screen and (max-width: 992px) {
+      .hero-right {
+        height: 300px;
+      }
+      .hero-left .main-text {
+        font-size: 1.6rem;
+      }
+    }
   </style>
 </head>
 <body>
 
+<!-- ヘッダー -->
 <header>
   <div class="logo">
-    <!-- ロゴ画像を差し替えてください -->
-    <img src="https://via.placeholder.com/100x30?text=LOGO" alt="Logo">
+    <img src="https://via.placeholder.com/100x30?text=LOGO" alt="LOGO">
   </div>
   <nav>
     <ul>
@@ -257,162 +213,132 @@
   </nav>
 </header>
 
+<!-- ファーストビュー（ヒーローセクション） -->
 <section class="hero">
   <div class="hero-container">
-    <!-- 左カラム：テキストエリア -->
-    <div class="hero-left"></div>
-
-      <!-- メインコンセプトのテキストを配置 -->
-      <div class="sub-text">AI時代の幕開けと、あなたの本質的な価値を探る―</div>
+    
+    <!-- 左カラム：テキスト -->
+    <div class="hero-left">
+      <div class="sub-text">
+        AI時代の幕開けと、あなたの本質的な価値を探る―
+      </div>
       <h1 class="main-text">AIに使われないための思考術</h1>
-
       <p class="desc-text">
         世はまさに「知のゴールドラッシュ」が到来中。<br>
         AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
         本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
       </p>
-
-      <!-- CTAボタン -->
-      <a href="#entry" class="cta-button">
-        今すぐセミナーに申し込む
-      </a>
+      <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
     </div>
+
+    <!-- 右カラム：アイコン配置 -->
+    <div class="hero-right" id="heroRightContainer">
+      <!-- JavaScriptによりアイコンが挿入されます -->
+    </div>
+
   </div>
 </section>
 
-<!-- 企業ロゴ群などを配置するセクション（任意） -->
-<section class="logo-section">
-  <div class="logo-container">
-    <!-- 必要に応じてクライアント企業やパートナー企業のロゴを並べる -->
-    <img src="https://via.placeholder.com/100x40?text=Logo1" alt="Logo1">
-    <img src="https://via.placeholder.com/100x40?text=Logo2" alt="Logo2">
-    <img src="https://via.placeholder.com/100x40?text=Logo3" alt="Logo3">
-    <img src="https://via.placeholder.com/100x40?text=Logo4" alt="Logo4">
-  </div>
-</section>
-
-<!-- 以下、申し込みフォームやセミナーの詳細を配置するセクションを想定 -->
-<section id="entry" style="padding: 40px; background-color: #f5f5f5;">
+<!-- セミナーお申込みフォーム -->
+<section id="entry" style="padding: 40px; background-color: #fff;">
   <h2>セミナーお申込みフォーム</h2>
-  <p>ここに実際のお申し込みフォームや詳細を配置します。</p>
+  <p>ここに申し込みフォーム等を配置します。</p>
 </section>
 
-  <main>
-  <p class="description">
-    下記のエリアに、AIの活用例をアイコンとともにランダムに配置しています。<br>
-    各アイコンにカーソルを合わせると、AIの用途がわかるツールチップが表示されます。
-  </p>
-
-  <!-- アイコンをランダムに配置するコンテナ -->
-  <div class="ai-icons-container" id="aiContainer"></div>
-</main>
-  
-  <script>
+<script>
   /* ------------------------------------------------------------------
-   1. ランダム配置したいAI関連項目のデータを定義
-      （アイコンURL、名称、簡易説明）
---------------------------------------------------------------------- */
-const aiFeatures = [
-  {
-    icon: "https://via.placeholder.com/32/FFA500/FFFFFF?text=CV", 
-    name: "画像認識",
-    description: "カメラ映像や写真から物体を判別します"
-  },
-  {
-    icon: "https://via.placeholder.com/32/6495ED/FFFFFF?text=STT", 
-    name: "音声認識",
-    description: "音声をテキスト化して活用できます"
-  },
-  {
-    icon: "https://via.placeholder.com/32/FF69B4/FFFFFF?text=NLP", 
-    name: "自然言語処理",
-    description: "文章を解析して意味を理解します"
-  },
-  {
-    icon: "https://via.placeholder.com/32/32CD32/FFFFFF?text=BOT", 
-    name: "チャットボット",
-    description: "24時間自動応答で顧客対応を効率化"
-  },
-  {
-    icon: "https://via.placeholder.com/32/FF8C00/FFFFFF?text=REC", 
-    name: "レコメンド",
-    description: "ユーザーに応じた商品や情報を提案"
-  },
-  {
-    icon: "https://via.placeholder.com/32/00CED1/FFFFFF?text=RP", 
-    name: "需要予測",
-    description: "在庫や売上を高精度で予測します"
-  },
-  {
-    icon: "https://via.placeholder.com/32/DA70D6/FFFFFF?text=RPA", 
-    name: "RPA",
-    description: "定型業務を自動化して効率化を実現"
-  },
-  {
-    icon: "https://via.placeholder.com/32/FF6347/FFFFFF?text=ML", 
-    name: "機械学習",
-    description: "大量データからパターンを学習します"
-  },
-  {
-    icon: "https://via.placeholder.com/32/8A2BE2/FFFFFF?text=AD", 
-    name: "異常検知",
-    description: "センサー等のデータから異常を早期発見"
-  },
-  {
-    icon: "https://via.placeholder.com/32/2E8B57/FFFFFF?text=TR", 
-    name: "AI翻訳",
-    description: "多言語を瞬時に翻訳しコミュニケーション"
+     1. AI関連項目データ（名称・アイコンURL・説明）
+  --------------------------------------------------------------------- */
+  const aiFeatures = [
+    {
+      icon: "https://via.placeholder.com/32/FFA500/FFFFFF?text=CV", 
+      name: "画像認識",
+      description: "カメラ映像や写真から物体を判別します"
+    },
+    {
+      icon: "https://via.placeholder.com/32/6495ED/FFFFFF?text=STT", 
+      name: "音声認識",
+      description: "音声をテキスト化して活用できます"
+    },
+    {
+      icon: "https://via.placeholder.com/32/FF69B4/FFFFFF?text=NLP", 
+      name: "自然言語処理",
+      description: "文章を解析して意味を理解します"
+    },
+    {
+      icon: "https://via.placeholder.com/32/32CD32/FFFFFF?text=BOT", 
+      name: "チャットボット",
+      description: "24時間自動応答で顧客対応を効率化"
+    },
+    {
+      icon: "https://via.placeholder.com/32/FF8C00/FFFFFF?text=REC", 
+      name: "レコメンド",
+      description: "ユーザーに応じた商品や情報を提案"
+    },
+    {
+      icon: "https://via.placeholder.com/32/00CED1/FFFFFF?text=RP", 
+      name: "需要予測",
+      description: "在庫や売上を高精度で予測します"
+    }
+  ];
+
+  /* ------------------------------------------------------------------
+     2. ランダム配置関数
+  --------------------------------------------------------------------- */
+  function placeIconsRandomly() {
+    const container = document.getElementById("heroRightContainer");
+    const containerWidth = container.offsetWidth;
+    const containerHeight = container.offsetHeight;
+
+    // サイズが取得できない場合は再試行
+    if (containerWidth === 0 || containerHeight === 0) {
+      console.error("Container dimensions are zero. Retrying after a delay.");
+      setTimeout(placeIconsRandomly, 100);
+      return;
+    }
+
+    aiFeatures.forEach(feature => {
+      // アイコンカードの作成
+      const iconCard = document.createElement("div");
+      iconCard.className = "icon-card";
+      iconCard.style.transform = "scale(1)";
+
+      // アイコン画像の作成
+      const iconImg = document.createElement("img");
+      iconImg.src = feature.icon;
+      iconImg.alt = feature.name;
+
+      // ツールチップの作成
+      const tooltip = document.createElement("div");
+      tooltip.className = "tooltip";
+      tooltip.innerHTML = `<strong>${feature.name}</strong><br>${feature.description}`;
+
+      // 要素の組み立て
+      iconCard.appendChild(iconImg);
+      iconCard.appendChild(tooltip);
+
+      // ランダムな座標を計算（アイコンサイズ60pxを考慮）
+      const maxLeft = containerWidth - 60;
+      const maxTop = containerHeight - 60;
+      const randomLeft = Math.random() * maxLeft;
+      const randomTop = Math.random() * maxTop;
+      iconCard.style.left = `${randomLeft}px`;
+      iconCard.style.top = `${randomTop}px`;
+
+      // コンテナに追加
+      container.appendChild(iconCard);
+    });
   }
-];
 
-/* ------------------------------------------------------------------
-   2. ランダム配置処理
-   - コンテナサイズを取得して、アイコンをランダム座標に配置
---------------------------------------------------------------------- */
-function placeIconsRandomly() {
-  const container = document.getElementById("aiContainer");
-  const containerWidth = container.clientWidth;
-  const containerHeight = container.clientHeight;
+  /* ------------------------------------------------------------------
+     3. ページ読み込み後に配置実行
+  --------------------------------------------------------------------- */
+  if (document.readyState === "complete") {
+    placeIconsRandomly();
+  } else {
+    window.addEventListener("load", placeIconsRandomly);
+  }
+</script>
 
-  // アイコン配列をループし、要素を生成して配置
-  aiFeatures.forEach(feature => {
-    // アイコンカード要素
-    const iconCard = document.createElement("div");
-    iconCard.className = "icon-card";
-
-    // アイコン画像
-    const iconImg = document.createElement("img");
-    iconImg.src = feature.icon;
-    iconImg.alt = feature.name;
-
-    // ツールチップ
-    const tooltip = document.createElement("div");
-    tooltip.className = "tooltip";
-    tooltip.innerHTML = `<strong>${feature.name}</strong><br>${feature.description}`;
-
-    iconCard.appendChild(iconImg);
-    iconCard.appendChild(tooltip);
-
-    // ランダム座標を算出
-    // アイコンサイズを60pxにしているため、上下左右に余白を考慮
-    const maxLeft = containerWidth - 60;
-    const maxTop = containerHeight - 60;
-    const randomLeft = Math.random() * maxLeft;
-    const randomTop = Math.random() * maxTop;
-
-    // 絶対座標を設定
-    iconCard.style.left = `${randomLeft}px`;
-    iconCard.style.top = `${randomTop}px`;
-
-    // コンテナに追加
-    container.appendChild(iconCard);
-  });
-}
-
-/* ------------------------------------------------------------------
-   3. ページ読み込み時にアイコンを配置
---------------------------------------------------------------------- */
-window.addEventListener("load", placeIconsRandomly);
 </body>
 </html>
-
