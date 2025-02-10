@@ -2,9 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>AIセミナー</title>
+  <title>AIセミナー - ファーストビュー（FontAwesome, Particle背景, Shakeアニメーション）</title>
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 独立したCSSファイルの読み込み -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,60 +15,37 @@
   
   <!-- ヒーローセクション -->
   <section class="hero">
-   
     <!-- Particle背景 -->
     <div id="particles-js"></div>
     <div class="hero-container">
-      
       <!-- 左カラム：テキストとCTAボタン -->
       <div class="hero-left">
-   <h1>AIに使われないための<span class="desktop-br"><br></span>思考術</h1>
-  <p>
-    AI時代の幕開けと、<span class="desktop-br"><br></span>
-    あなたの本質的な価値を探る―<span class="desktop-br"><br></span>
-    世はまさに「知のゴールドラッシュ」が到来中。<span class="desktop-br"><br><br></span>
-    AIで稼ぐ人が増える今、<span class="desktop-br"><br></span>
-    あなたはどんな行動を選びますか？<span class="desktop-br"><br><br></span>
-    本セミナーに参加すれば、<span class="desktop-br"><br></span>
-    あなたもゴールドラッシュへ踏み出せます！
-  </p>
-  <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
-</div>
-
-      
-      <!-- 右カラム：FontAwesomeアイコンと説明文のグリッド -->
-      <div class="hero-right" id="iconGrid"> </div>
-    </div>
-  </section>
-
-<!-- 講師紹介セクション -->
-  <section id="instructor" class="instructor-section">
-    <div class="instructor-container">
-      <!-- 左カラム：プロフィール写真 -->
-      <div class="instructor-photo">
-        <!-- ここでは仮の画像URLを使用。実際はご自身の画像パスに変更してください -->
-        <img src="images/maruyama.jpg" alt="講師 丸山勇大">
-      </div>
-      <!-- 右カラム：講師情報 -->
-      <div class="instructor-info">
-        <h2>丸山勇大</h2>
-        <h3>AIクリエイター</h3>
-        <p>
-          丸山勇大は、AIを活用したアプリ開発や企画などを手掛けるAIクリエイターです。<br>
-          最新の技術を駆使して革新的なプロジェクトを実現し、参加者に実践的な知識と戦略を伝授します。
+        <h1>
+          AIに使われないための<span class="line-break"><br></span>思考術
+        </h1>
+        <!-- リードコピー（複数の行に分割） -->
+        <p class="lead-copy">
+          <span class="line1">AI時代の幕開けと、あなたの本質的な価値を探る―</span>
+          <span class="line2">世はまさに「知のゴールドラッシュ」が到来中。</span>
+          <span class="line3">AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？</span>
+          <span class="line4">本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！</span>
         </p>
+        <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
+      </div>
+      <!-- 右カラム：FontAwesomeアイコンと説明文のグリッド -->
+      <div class="hero-right" id="iconGrid">
+        <!-- iconDataはscript.jsで動的に生成 -->
       </div>
     </div>
   </section>
   
-
   <!-- セミナーお申込みフォーム -->
-  <section id="entry" style="padding: 40px; background-color: #fff;">
+  <section id="entry" class="entry-section">
     <h2>セミナーお申込みフォーム</h2>
     <p>ここに申し込みフォームなどを配置します。</p>
   </section>
   
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- 独立したJSファイルの読み込み -->
   <script src="script.js"></script>
 </body>
 </html>
