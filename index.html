@@ -168,6 +168,76 @@
         font-size: 1.6rem;
       }
     }
+
+/* ランダム配置するコンテナ */
+    .ai-icons-container {
+      position: relative;
+      width: 100%;
+      height: 600px; /* 必要に応じて高さを調整 */
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden; /* アイコンがはみ出ないように */
+    }
+
+    /* アイコン用カード */
+    .icon-card {
+      position: absolute; /* ランダム配置のため absolute */
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .icon-card:hover {
+      transform: scale(1.1);
+      z-index: 999; /* ホバー時手前に */
+    }
+
+    /* カード内のアイコン画像 */
+    .icon-card img {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* ツールチップ（名称・説明） */
+    .tooltip {
+      position: absolute;
+      bottom: 70px; /* アイコンの真上に表示 */
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 120px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      text-align: center;
+      white-space: normal;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .icon-card:hover .tooltip {
+      opacity: 1;
+    }
+
+    /* ツールチップの三角形 */
+    .tooltip::before {
+      content: "";
+      position: absolute;
+      bottom: -6px; /* ツールチップの下部中央に三角形 */
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: rgba(0,0,0,0.8);
+    }
+    
   </style>
 </head>
 <body>
@@ -227,6 +297,122 @@
   <p>ここに実際のお申し込みフォームや詳細を配置します。</p>
 </section>
 
+  <main>
+  <p class="description">
+    下記のエリアに、AIの活用例をアイコンとともにランダムに配置しています。<br>
+    各アイコンにカーソルを合わせると、AIの用途がわかるツールチップが表示されます。
+  </p>
+
+  <!-- アイコンをランダムに配置するコンテナ -->
+  <div class="ai-icons-container" id="aiContainer"></div>
+</main>
+  
+  <script>
+  /* ------------------------------------------------------------------
+   1. ランダム配置したいAI関連項目のデータを定義
+      （アイコンURL、名称、簡易説明）
+--------------------------------------------------------------------- */
+const aiFeatures = [
+  {
+    icon: "https://via.placeholder.com/32/FFA500/FFFFFF?text=CV", 
+    name: "画像認識",
+    description: "カメラ映像や写真から物体を判別します"
+  },
+  {
+    icon: "https://via.placeholder.com/32/6495ED/FFFFFF?text=STT", 
+    name: "音声認識",
+    description: "音声をテキスト化して活用できます"
+  },
+  {
+    icon: "https://via.placeholder.com/32/FF69B4/FFFFFF?text=NLP", 
+    name: "自然言語処理",
+    description: "文章を解析して意味を理解します"
+  },
+  {
+    icon: "https://via.placeholder.com/32/32CD32/FFFFFF?text=BOT", 
+    name: "チャットボット",
+    description: "24時間自動応答で顧客対応を効率化"
+  },
+  {
+    icon: "https://via.placeholder.com/32/FF8C00/FFFFFF?text=REC", 
+    name: "レコメンド",
+    description: "ユーザーに応じた商品や情報を提案"
+  },
+  {
+    icon: "https://via.placeholder.com/32/00CED1/FFFFFF?text=RP", 
+    name: "需要予測",
+    description: "在庫や売上を高精度で予測します"
+  },
+  {
+    icon: "https://via.placeholder.com/32/DA70D6/FFFFFF?text=RPA", 
+    name: "RPA",
+    description: "定型業務を自動化して効率化を実現"
+  },
+  {
+    icon: "https://via.placeholder.com/32/FF6347/FFFFFF?text=ML", 
+    name: "機械学習",
+    description: "大量データからパターンを学習します"
+  },
+  {
+    icon: "https://via.placeholder.com/32/8A2BE2/FFFFFF?text=AD", 
+    name: "異常検知",
+    description: "センサー等のデータから異常を早期発見"
+  },
+  {
+    icon: "https://via.placeholder.com/32/2E8B57/FFFFFF?text=TR", 
+    name: "AI翻訳",
+    description: "多言語を瞬時に翻訳しコミュニケーション"
+  }
+];
+
+/* ------------------------------------------------------------------
+   2. ランダム配置処理
+   - コンテナサイズを取得して、アイコンをランダム座標に配置
+--------------------------------------------------------------------- */
+function placeIconsRandomly() {
+  const container = document.getElementById("aiContainer");
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+
+  // アイコン配列をループし、要素を生成して配置
+  aiFeatures.forEach(feature => {
+    // アイコンカード要素
+    const iconCard = document.createElement("div");
+    iconCard.className = "icon-card";
+
+    // アイコン画像
+    const iconImg = document.createElement("img");
+    iconImg.src = feature.icon;
+    iconImg.alt = feature.name;
+
+    // ツールチップ
+    const tooltip = document.createElement("div");
+    tooltip.className = "tooltip";
+    tooltip.innerHTML = `<strong>${feature.name}</strong><br>${feature.description}`;
+
+    iconCard.appendChild(iconImg);
+    iconCard.appendChild(tooltip);
+
+    // ランダム座標を算出
+    // アイコンサイズを60pxにしているため、上下左右に余白を考慮
+    const maxLeft = containerWidth - 60;
+    const maxTop = containerHeight - 60;
+    const randomLeft = Math.random() * maxLeft;
+    const randomTop = Math.random() * maxTop;
+
+    // 絶対座標を設定
+    iconCard.style.left = `${randomLeft}px`;
+    iconCard.style.top = `${randomTop}px`;
+
+    // コンテナに追加
+    container.appendChild(iconCard);
+  });
+}
+
+/* ------------------------------------------------------------------
+   3. ページ読み込み時にアイコンを配置
+--------------------------------------------------------------------- */
+window.addEventListener("load", placeIconsRandomly);
 </body>
 </html>
 
