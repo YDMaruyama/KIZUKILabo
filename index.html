@@ -67,8 +67,9 @@ header {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  /* 背景：中心から放射状に輝くグラデーション＋パステルブルーのリニアグラデーション */
+  /* 背景は、下段に波のパターン、中央に放射状グラデーション、全体にパステルブルーのリニアグラデーションを重ねています */
   background: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.3' d='M0,192L48,202.7C96,213,192,235,288,250.7C384,267,480,277,576,261.3C672,245,768,203,864,181.3C960,160,1056,160,1152,181.3C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom,
     radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 60%),
     linear-gradient(135deg, #F3F9FF, #D9EFFF);
   background-blend-mode: screen;
@@ -100,16 +101,17 @@ header::after {
   }
 }
 
-/* ヒーローセクション用の暗めオーバーレイ（テキストの視認性向上） */
-header::before {
+body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='3' fill='%23FF6F61' opacity='0.3'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: 0.2;
+  z-index: -1;
 }
 
 /* ヒーローコンテンツ */
