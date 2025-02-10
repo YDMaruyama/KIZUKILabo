@@ -209,20 +209,7 @@ header h1 {
   color: #666;
 }
 
-/* カレンダー予約ボタン */
-.calendar-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 
-.calendar-btn:hover {
-  background-color: #0056b3;
-}
 /* 講師紹介セクション */
 .instructor-section {
   background-color: #ffffff;
