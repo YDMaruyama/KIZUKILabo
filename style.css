@@ -138,6 +138,54 @@ header h1 {
   font-size: 1rem;
   margin-top: 10px;
 }
+/* 講師紹介セクション */
+.instructor-section {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  color: #333;
+}
+.instructor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* 左カラム：プロフィール写真 */
+.instructor-photo {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+.instructor-photo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 右カラム：講師情報 */
+.instructor-info {
+  flex: 2;
+  min-width: 300px;
+}
+.instructor-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.instructor-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #56c0b5;
+}
+.instructor-info p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
 
 /* レスポンシブ調整 */
 @media screen and (max-width: 768px) {
