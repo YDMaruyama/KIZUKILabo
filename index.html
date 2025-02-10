@@ -95,34 +95,6 @@ header {
       to { transform: translateX(-50%); }
     }
     
-  /* 粒子コンテナ */
-header .particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 3;
-  overflow: hidden;
-}
-
-/* 粒子の基本スタイル */
-header .particle {
-  position: absolute;
-  background: var(--accent-color);
-  border-radius: 50%;
-  opacity: 0.8;
-  animation: moveParticle 8s linear infinite;
-}
-
-/* 粒子の移動アニメーション */
-@keyframes moveParticle {
-  0% { transform: translate(0, 0); opacity: 0.8; }
-  50% { transform: translate(20px, -20px); opacity: 0.4; }
-  100% { transform: translate(0, 0); opacity: 0.8; }
-}
-
 
 /* ヒーロー背景にパルス効果を与えるオーバーレイ */
 header::after {
@@ -764,49 +736,13 @@ header p {
   function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
   }
-document.addEventListener("DOMContentLoaded", function() {
-  const particlesContainer = document.querySelector('header .particles');
-  const numberOfParticles = 30; // 例：30個生成する
 
-  for (let i = 0; i < numberOfParticles; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-
-    // 20% の確率で大きな円、それ以外は小さい円
-    let size;
-    if (Math.random() < 0.2) {
-      // 大きい円: 30px～50px
-      size = Math.floor(Math.random() * 20) + 30;
-    } else {
-      // 小さい円: 5px～20px
-      size = Math.floor(Math.random() * 16) + 5;
-    }
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-
-    // ランダムな位置（0%～100%）
-    const top = Math.random() * 100;
-    const left = Math.random() * 100;
-    particle.style.top = `${top}%`;
-    particle.style.left = `${left}%`;
-
-    // ランダムなアニメーションの継続時間（5s～12s）および遅延（0s～3s）
-    const duration = Math.floor(Math.random() * 8) + 5;
-    const delay = Math.random() * 3;
-    particle.style.animationDuration = `${duration}s`;
-    particle.style.animationDelay = `${delay}s`;
-
-    particlesContainer.appendChild(particle);
-  }
-});
-
-  
   // 口コミセットの自動切替（左スライド＆フェードアウト、右スライド＆フェードインのアニメーション付き）
   document.addEventListener("DOMContentLoaded", function() {
     let currentSet = 0;
     const testimonialSets = document.querySelectorAll('.testimonial-set');
     const totalSets = testimonialSets.length;
-
+    
     function nextTestimonialSet() {
       const current = testimonialSets[currentSet];
       // 現在のセットに退出アニメーションを適用
