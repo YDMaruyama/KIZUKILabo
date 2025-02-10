@@ -1,0 +1,438 @@
+<style>
+     /* 全体背景のデザイン */
+    
+    body {
+      margin: 0;
+      padding: 0;
+      /* 背景全体に、中心から輝く放射状のグラデーションと全体に柔らかなブルーグラデーションを重ねています */
+      background: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 60%),
+        linear-gradient(135deg, #F3F9FF, #D9EFFF);
+      /* 2つの背景を乗算やスクリーンなどのブレンドモードで合わせると、より自然な明るさの変化を表現できます */
+      background-blend-mode: screen;
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* 背景に控えめなSVGパターンをオーバーレイ */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* 小さなオレンジ色の円のパターン。以下のURLはURLエンコード済み */
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='3' fill='%23FF6F61' opacity='0.3'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    
+    /* カラーパレットと基本設定 */
+    :root {
+      --primary-color: #4A90E2;  /* 青 */
+      --accent-color: #FF6F61;   /* オレンジ系 */
+      --bg-color: #fff;
+      --light-gray: #f7f7f7;
+      --text-color: #333;
+      --overlay-color: rgba(0,0,0,0.6);
+    }
+    
+    /* リセット */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-color);
+      background: var(--bg-color);
+      line-height: 1.6;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* 各セクション共通の余白 */
+    section {
+      padding: 80px 0;
+    }
+    
+    /* ヒーローセクション */
+header {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* 中心から輝く放射状のグラデーションと柔らかなパステルブルーのグラデーションの組み合わせ */
+  background: 
+    radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(135deg, #F3F9FF, #D9EFFF);
+  background-blend-mode: screen;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 薄めのオーバーレイで全体のコントラストを調整 */
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+header .hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  background: var(--primary-color);  /* 例: #4A90E2 */
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background: var(--accent-color);  /* 例: #FF6F61 */
+}
+
+    
+    /* セクションタイトル */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    /* PROGATEとは */
+    #about {
+      background: var(--light-gray);
+    }
+    #about .content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    /* PROGATEの特徴 */
+    #features {
+      background: var(--bg-color);
+    }
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .feature-item {
+      background: var(--light-gray);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .feature-item:hover {
+      transform: translateY(-5px);
+    }
+    .feature-item h3 {
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    
+    /* コース内容（横一列：1行5列＆ギザギザ配置） */
+    #courses {
+      background: var(--light-gray);
+    }
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .course-item {
+      background: var(--bg-color);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    /* ギザギザ配置：奇数番目は上方向、偶数番目は下方向にオフセット */
+    .course-item:nth-child(odd) {
+      transform: translateY(-20px);
+    }
+    .course-item:nth-child(even) {
+      transform: translateY(20px);
+    }
+    .course-item:hover {
+      transform: translateY(0);
+    }
+    .course-item h4 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+    
+    /* 利用価格表 */
+    #pricing {
+      background: var(--bg-color);
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+      max-width: 800px;
+    }
+    .pricing-table th,
+    .pricing-table td {
+      padding: 20px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .pricing-table th {
+      background: var(--primary-color);
+      color: #fff;
+    }
+    
+  /* 口コミセクション全体 */
+#testimonials {
+  background: var(--light-gray);
+}
+
+/* 口コミスライダーコンテナ */
+.testimonial-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 380px;  /* セット全体の高さ（口コミカードの高さに合わせる） */
+}
+
+/* 各口コミセット：横に3カード並び */
+.testimonial-set {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* アクティブなセットは表示 */
+.testimonial-set.active {
+  opacity: 1;
+  position: relative;
+}
+
+/* キーフレーム：左へスライド＆フェードアウト */
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/* キーフレーム：右からスライドイン＆フェードイン */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 出る時のアニメーション */
+.testimonial-set.exit {
+  animation: fadeOutLeft 0.5s forwards;
+}
+
+/* 入る時のアニメーション */
+.testimonial-set.enter {
+  animation: fadeInRight 0.5s forwards;
+}
+
+/* 各口コミカード */
+.testimonial {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  text-align: center;
+  flex: 1;
+  max-width: 32%;  /* 3カードが横に並ぶ */
+}
+.testimonial img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  display: block;
+}
+.testimonial-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+.testimonial-text {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 992px) {
+  .testimonial-set {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial {
+    max-width: 80%;
+  }
+}
+
+
+/* レスポンシブ：画面幅が狭い場合 */
+@media (max-width: 992px) {
+  .testimonial-set {
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial {
+    max-width: 80%;
+  }
+}
+
+    
+    /* CTAセクション */
+#cta {
+  /* グラデーション背景で印象的に */
+  background: linear-gradient(135deg, #4A90E2, #50E3C2);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景に薄い斜めのオーバーレイを追加（動的な印象） */
+#cta::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.05);
+  transform: rotate(45deg);
+}
+
+/* コンテナはオーバーレイより前面に表示 */
+#cta .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* CTAタイトル */
+#cta .cta-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* CTAサブタイトル */
+#cta .cta-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+/* CTAボタン（アクセントカラー・拡大アニメーション） */
+#cta .cta-btn {
+  background: #FF6F61; /* アクセントカラー */
+  color: #fff;
+  display: inline-block;
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+  /* 中央揃え（親要素のtext-align: center; と組み合わせ） */
+  margin: 0 auto;
+}
+#cta .cta-btn:hover {
+  background: #e65d53;
+  transform: scale(1.05);
+}
+
+    
+    /* レスポンシブ（画面幅が狭い場合は自動的に列数を減らす） */
+    @media (max-width: 992px) {
+      .course-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .course-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
