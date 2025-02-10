@@ -78,11 +78,13 @@
       justify-content: space-between;
     }
 
-    /* 左カラム */
-    .hero-left {
+   hero-left {
       flex: 1;
       color: #fff;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* 垂直方向で中央寄せ */
     }
     .hero-left .sub-text {
       font-size: 1.2rem;
@@ -101,8 +103,6 @@
       line-height: 1.8;
       max-width: 500px;
     }
-
-
     /* CTAボタン */
     .cta-button {
       display: inline-block;
