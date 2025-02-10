@@ -96,19 +96,3 @@ iconData.forEach(data => {
   iconGrid.appendChild(card);
 });
 
-// DOMContentLoadedでページが完全に読み込まれてから処理を実行
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("講師紹介セクションが読み込まれました。");
-
-  // 講師のプロフィール写真にホバー時の拡大効果を追加する例
-  const instructorImg = document.querySelector(".instructor-photo img");
-  if (instructorImg) {
-    instructorImg.addEventListener("mouseover", function() {
-      instructorImg.style.transform = "scale(1.05)";
-      instructorImg.style.transition = "transform 0.3s";
-    });
-    instructorImg.addEventListener("mouseout", function() {
-      instructorImg.style.transform = "scale(1)";
-    });
-  }
-});
