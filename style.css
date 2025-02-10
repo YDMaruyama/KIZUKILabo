@@ -1,15 +1,11 @@
-    /* RESETと基本設定 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    /* 全体の基本設定 */
+/* style.css */
+
+/* 全体の基本設定 */
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   color: #333;
-  line-height: 1.8;  /* 行間をやや広めに */
+  line-height: 1.8;
   margin: 0;
   padding: 0;
 }
@@ -32,7 +28,7 @@ header h1 {
   position: relative;
   background-color: #56c0b5;
   color: #fff;
-  padding: 100px 20px;  /* 上下の余白を十分に確保 */
+  padding: 100px 20px;
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -75,12 +71,32 @@ header h1 {
   margin-bottom: 20px;
   line-height: 1.2;
 }
+.hero-left h1 .line-break {
+  display: none; /* スマホでは改行なし */
+}
+@media screen and (min-width: 769px) {
+  /* デスクトップではh1内の改行を表示 */
+  .hero-left h1 .line-break {
+    display: inline;
+  }
+}
 
-.hero-left p {
+.lead-copy {
   font-size: 1.25rem;
   margin-bottom: 30px;
-  /* 改行やスペースをそのまま反映 */
   white-space: pre-wrap;
+}
+/* デスクトップ時：各行を強制的に改行 */
+@media screen and (min-width: 769px) {
+  .lead-copy span {
+    display: block;
+  }
+}
+/* スマホ時：spanはインラインにして自然な改行に任せる */
+@media screen and (max-width: 768px) {
+  .lead-copy span {
+    display: inline;
+  }
 }
 .cta-button {
   display: inline-block;
@@ -138,6 +154,14 @@ header h1 {
   font-size: 1rem;
   margin-top: 10px;
 }
+
+/* セミナーお申込みフォームセクション */
+.entry-section {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
 /* 講師紹介セクション */
 .instructor-section {
   background-color: #ffffff;
@@ -148,12 +172,10 @@ header h1 {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   gap: 40px;
+  align-items: center;
   flex-wrap: wrap;
 }
-
-/* 左カラム：プロフィール写真 */
 .instructor-photo {
   flex: 1;
   min-width: 300px;
@@ -166,8 +188,6 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
-/* 右カラム：講師情報 */
 .instructor-info {
   flex: 2;
   min-width: 300px;
@@ -186,19 +206,22 @@ header h1 {
   line-height: 1.8;
 }
 
-.desktop-br {
-  display: inline; /* デスクトップでは表示して改行効果を発揮 */
-}
-
-/* スマホ用（画面幅768px以下）の調整 */
+/* レスポンシブ調整 */
 @media screen and (max-width: 768px) {
-  .desktop-br {
-    display: none;  /* スマホでは明示的な改行は非表示に */
-  }
   .hero-left h1 {
     font-size: 2.5rem;
   }
-  .hero-left p {
+  .hero-left p, .lead-copy {
+    font-size: 1.1rem;
+  }
+  .instructor-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .instructor-info h2 {
+    font-size: 2rem;
+  }
+  .instructor-info p {
     font-size: 1rem;
   }
 }
