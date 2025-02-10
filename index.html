@@ -766,33 +766,40 @@ header p {
   }
 document.addEventListener("DOMContentLoaded", function() {
   const particlesContainer = document.querySelector('header .particles');
-  const numberOfParticles = 20; // 例：20個生成する
+  const numberOfParticles = 30; // 例：30個生成する
 
   for (let i = 0; i < numberOfParticles; i++) {
     const particle = document.createElement('div');
     particle.classList.add('particle');
 
-    // ランダムなサイズ（例：5px～20px）
-    const size = Math.floor(Math.random() * 16) + 5;
+    // 20% の確率で大きな円、それ以外は小さい円
+    let size;
+    if (Math.random() < 0.2) {
+      // 大きい円: 30px～50px
+      size = Math.floor(Math.random() * 20) + 30;
+    } else {
+      // 小さい円: 5px～20px
+      size = Math.floor(Math.random() * 16) + 5;
+    }
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
 
-    // ランダムな位置（例：top: 0%～100%、left: 0%～100%）
+    // ランダムな位置（0%～100%）
     const top = Math.random() * 100;
     const left = Math.random() * 100;
     particle.style.top = `${top}%`;
     particle.style.left = `${left}%`;
 
-    // ランダムなアニメーションの継続時間（例：5s～12s）および遅延（例：0s～3s）
+    // ランダムなアニメーションの継続時間（5s～12s）および遅延（0s～3s）
     const duration = Math.floor(Math.random() * 8) + 5;
     const delay = Math.random() * 3;
     particle.style.animationDuration = `${duration}s`;
     particle.style.animationDelay = `${delay}s`;
 
-    // コンテナに追加
     particlesContainer.appendChild(particle);
   }
 });
+
   
   // 口コミセットの自動切替（左スライド＆フェードアウト、右スライド＆フェードインのアニメーション付き）
   document.addEventListener("DOMContentLoaded", function() {
