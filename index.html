@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Yappli UNITE風LPファーストビュー</title>
+  <title>AIセミナーLPファーストビュー</title>
   <style>
     /* ------------------------------
        RESET
@@ -19,7 +19,6 @@
 
     /* ------------------------------
        ヘッダーのナビゲーション例
-       （固定ヘッダー想定：簡易的に作成）
     ------------------------------ */
     header {
       width: 100%;
@@ -38,7 +37,7 @@
       align-items: center;
     }
     header .logo img {
-      height: 30px; /* 実際のロゴサイズに合わせて調整 */
+      height: 30px; 
     }
     nav ul {
       list-style: none;
@@ -70,7 +69,6 @@
       overflow: hidden;
     }
 
-    /* hero 内のコンテンツを横並びにする */
     .hero-container {
       display: flex;
       max-width: 1200px;
@@ -100,15 +98,15 @@
     .hero-left .desc-text {
       font-size: 1rem;
       margin-bottom: 30px;
-      line-height: 1.6;
-      max-width: 400px;
+      line-height: 1.8;
+      max-width: 500px;
     }
 
-    /* 縦書き擬似表現（テキストを90度回転させる） */
+    /* 縦書き風テキスト（回転演出用） */
     .vertical-text {
       position: absolute;
       top: 50px;
-      left: -70px; 
+      left: -80px; 
       transform: rotate(-90deg);
       transform-origin: left top;
       font-size: 1rem;
@@ -132,17 +130,7 @@
       background-color: #333;
     }
 
-    /* HRアワードバッジなどを想定した要素 */
-    .award-badge {
-      margin-top: 15px;
-      display: inline-block;
-    }
-    .award-badge img {
-      width: 80px;
-      height: auto;
-    }
-
-    /* 右カラム（人物やスマホUIなど） */
+    /* 右カラム（人物画像など） */
     .hero-right {
       flex: 1;
       display: flex;
@@ -151,13 +139,13 @@
       position: relative;
     }
     .hero-right img {
-      max-height: 70vh; /* 画像高さをビューポートに対して適宜調整 */
+      max-height: 70vh;
       width: auto;
       object-fit: contain;
       border-radius: 6px;
     }
 
-    /* 企業ロゴを横並びに表示 */
+    /* 企業ロゴを横並びに表示（例示的に残しています） */
     .logo-section {
       width: 100%;
       background-color: #fff;
@@ -173,7 +161,7 @@
       gap: 30px;
     }
     .logo-container img {
-      height: 40px; /* 実際のロゴに合わせて調整 */
+      height: 40px;
       object-fit: contain;
     }
 
@@ -186,7 +174,7 @@
         margin-top: 30px;
       }
       .vertical-text {
-        display: none; /* 縦書きテキストはスマホでは非表示 */
+        display: none; /* スマホ時は隠す */
       }
       .hero-left .main-text {
         font-size: 1.6rem;
@@ -198,80 +186,72 @@
 
 <header>
   <div class="logo">
-    <!-- ↓ロゴ画像は適宜差し替え -->
-    <img src="https://via.placeholder.com/100x30?text=Yappli+UNITE" alt="Logo">
+    <!-- ロゴ画像を差し替えてください -->
+    <img src="https://via.placeholder.com/100x30?text=LOGO" alt="Logo">
   </div>
   <nav>
     <ul>
-      <li><a href="#">Yappli UNITEでできること</a></li>
-      <li><a href="#">活用事例</a></li>
-      <li><a href="#">導入の特長</a></li>
-      <li><a href="#">料金体系</a></li>
+      <li><a href="#">セミナー概要</a></li>
+      <li><a href="#">プログラム</a></li>
+      <li><a href="#">講師紹介</a></li>
       <li><a href="#">お問い合わせ</a></li>
-      <li><a href="#">資料ダウンロード</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-container">
-    <!-- 左カラム -->
+    <!-- 左カラム：テキストエリア -->
     <div class="hero-left">
-      <!-- 縦方向のキャッチコピー（装飾用） -->
+      <!-- 縦方向のテキスト（装飾用） -->
       <div class="vertical-text">
-        ビジョン浸透<br>
-        人材育成<br>
-        リスキリング<br>
-        インナーブランディング
+        AI時代<br>
+        先行者優位<br>
+        リスク回避<br>
+        ゴールドラッシュ
       </div>
 
-      <div class="sub-text">社内ポータルアプリで情報集約。</div>
-      <h1 class="main-text">
-        どこからでもアクセスできて<br>
-        業務を効率化。
-      </h1>
+      <!-- メインコンセプトのテキストを配置 -->
+      <div class="sub-text">AI時代の幕開けと、あなたの本質的な価値を探る―</div>
+      <h1 class="main-text">AIに使われないための思考術</h1>
+
       <p class="desc-text">
-        Yappli UNITEでイキイキとした組織づくりを。<br>
-        3分でわかる資料を今すぐダウンロード！
+        世はまさに「知のゴールドラッシュ」が到来中。<br>
+        AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
+        本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
       </p>
-      <a href="#download" class="cta-button">
-        資料ダウンロード
-      </a>
 
-      <!-- HRアワードバッジのイメージをサンプルで表示 -->
-      <div class="award-badge">
-        <img src="https://via.placeholder.com/80?text=HR+Award" alt="HR Award">
-      </div>
+      <!-- CTAボタン -->
+      <a href="#entry" class="cta-button">
+        今すぐセミナーに申し込む
+      </a>
     </div>
 
-    <!-- 右カラム（人物写真など） -->
+    <!-- 右カラム：人物やイメージ画像 -->
     <div class="hero-right">
-      <!-- こちらも人物写真を置く。著作権画像なのでPlaceholderで代用 -->
-      <img src="https://via.placeholder.com/500x700?text=Person+Image" alt="Person">
+      <!-- 著作権対応のため、Placeholderを使用。差し替えOK -->
+      <img src="https://via.placeholder.com/400x600?text=AI+Seminar+Image" alt="AI Seminar">
     </div>
   </div>
 </section>
 
-<!-- 企業ロゴ群セクション -->
+<!-- 企業ロゴ群などを配置するセクション（任意） -->
 <section class="logo-section">
   <div class="logo-container">
-    <!-- ここに各企業ロゴを並べる。サンプルPlaceholderです -->
-    <img src="https://via.placeholder.com/100x40?text=KIRIN" alt="KIRIN">
-    <img src="https://via.placeholder.com/120x40?text=TOYOTA" alt="トヨタ自動車労働組合">
-    <img src="https://via.placeholder.com/100x40?text=AsahiKASEI" alt="旭化成アミダス">
-    <img src="https://via.placeholder.com/100x40?text=ORIX" alt="ORIX">
-    <img src="https://via.placeholder.com/120x40?text=SUMITOMO" alt="住友ゴム労働組合">
-    <img src="https://via.placeholder.com/120x40?text=Workman" alt="WORKMAN">
-    <img src="https://via.placeholder.com/100x40?text=DUSKIN" alt="DUSKIN">
-    <img src="https://via.placeholder.com/80x40?text=ORBIS" alt="ORBIS">
+    <!-- 必要に応じてクライアント企業やパートナー企業のロゴを並べる -->
+    <img src="https://via.placeholder.com/100x40?text=Logo1" alt="Logo1">
+    <img src="https://via.placeholder.com/100x40?text=Logo2" alt="Logo2">
+    <img src="https://via.placeholder.com/100x40?text=Logo3" alt="Logo3">
+    <img src="https://via.placeholder.com/100x40?text=Logo4" alt="Logo4">
   </div>
 </section>
 
-<!-- ダウンロードセクション仮置き -->
-<section id="download" style="padding: 40px; background-color: #f5f5f5;">
-  <h2>3分でわかる資料ダウンロード</h2>
-  <p>資料ダウンロード用のフォームや詳細をここに配置...</p>
+<!-- 以下、申し込みフォームやセミナーの詳細を配置するセクションを想定 -->
+<section id="entry" style="padding: 40px; background-color: #f5f5f5;">
+  <h2>セミナーお申込みフォーム</h2>
+  <p>ここに実際のお申し込みフォームや詳細を配置します。</p>
 </section>
 
 </body>
 </html>
+
