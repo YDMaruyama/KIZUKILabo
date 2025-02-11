@@ -196,7 +196,7 @@ html, body {
   background-size: 100px 100px;
   opacity: 0.3;
   animation: rotateShape 30s linear infinite;
-  z-index: 0;
+  z-index: -1;
 }
 @keyframes rotateShape {
   from { transform: rotate(0deg); }
