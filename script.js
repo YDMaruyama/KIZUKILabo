@@ -126,8 +126,10 @@ window.addEventListener('load', function() {
 
   const ctx = canvas.getContext('2d');
 
-  // ★ ここでまず変数と初期化関数を定義する ★
-  let particles = [];
+  // ★ まず、変数 particles を宣言（initParticles() で使用します） ★
+  let particles = []; 
+
+  // ★ particles を初期化する関数を定義 ★
   function initParticles() {
     particles = [];
     const cols = 20;  // 横方向の粒子数
@@ -151,11 +153,11 @@ window.addEventListener('load', function() {
     if (canvas.parentElement) {
       canvas.width = canvas.parentElement.offsetWidth;
       canvas.height = canvas.parentElement.offsetHeight;
-      initParticles(); // サイズ変更時に粒子の再配置
+      initParticles(); // サイズ変更時に粒子を再配置
     }
   }
   window.addEventListener('resize', resize);
-  resize();  // ここで初期サイズ設定＆粒子配置
+  resize();  // 初期サイズ設定と粒子配置
 
   let time = 0;
   function animate() {
