@@ -18,7 +18,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: -1;
 }
 
 .content {
@@ -164,12 +164,11 @@ html, body {
 }
 
 /* 内側のコンテンツ部分（HTML側で .inner-content でラップしてください） */
-seminar-overview .inner-content,
-.seminar-details .inner-content {
+seminar-overview .inner-content, {
   background-color: #56c0b5;  /* 内側は緑 */
   padding: 20px;
   border-radius: 4px;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* 概要セクションのテキストは、内側コンテンツでは暗い色に（例：#333） */
@@ -198,7 +197,7 @@ seminar-overview .inner-content,
   background-size: 100px 100px;
   opacity: 0.3;
   animation: rotateShape 30s linear infinite;
-  z-index: -1;
+  z-index: 0;
 }
 @keyframes rotateShape {
   from { transform: rotate(0deg); }
