@@ -2,136 +2,139 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIセミナー</title>
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>AIセミナー</h1>
-  </header>
+  <!-- 全体背景のパーティクル（固定配置） -->
+  <div id="particles-js"></div>
+
+  <!-- コンテンツ全体 -->
+  <div class="content">
+    <!-- ヘッダー -->
+    <header>
+      <h1>AIセミナー</h1>
+    </header>
   
-  <!-- ヒーローセクション -->
-  <section class="hero">
-   
-    <!-- Particle背景 -->
-    <div id="particles-js"></div>
-    <div class="hero-container">
-      
-      <!-- 左カラム：テキストとCTAボタン -->
-      <div class="hero-left">
-        <h1>AIに使われないための<br>思考術</h1>
-        <p>
-          AI時代の幕開けと、あなたの本質的な価値を探る―世はまさに<br>
-          「知のゴールドラッシュ」が到来中。<br>
-          AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
-          本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
-        </p>
-        <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+      <div class="hero-container">
+        <!-- 左カラム：テキストとCTAボタン -->
+        <div class="hero-left">
+          <h1>AIに使われないための<br>思考術</h1>
+          <p>
+            AI時代の幕開けと、あなたの本質的な価値を探る―世はまさに<br>
+            「知のゴールドラッシュ」が到来中。<br>
+            AIで稼ぐ人が増える今、あなたはどんな行動を選びますか？<br>
+            本セミナーに参加すれば、あなたもゴールドラッシュへ踏み出せます！
+          </p>
+          <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
+        </div>
+        <!-- 右カラム：アイコングリッド（必要に応じて内容を追加） -->
+        <div class="hero-right" id="iconGrid">
+          <!-- 例：FontAwesomeのアイコンを配置 -->
+          <i class="fa-solid fa-brain"></i>
+          <i class="fa-solid fa-robot"></i>
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
       </div>
-      
-      <!-- 右カラム：FontAwesomeアイコンと説明文のグリッド -->
-      <div class="hero-right" id="iconGrid"> </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 予約フォーム埋め込みセクション -->
-  <section class="reservation-form">
-    <h2>予約フォーム</h2>
-    <!-- aitemasu embed begin -->
-    <iframe src="https://app.aitemasu.me/u/unszzmm2/AIworkshop?embed=1&color=normal&calendaronly=1&utm_source=embed&utm_medium=iframe" width="100%" height="770px" style="border: none; overflow: hidden;" frameborder="0"></iframe>
-    <!-- aitem asu embed end -->
-  </section>
-  
- <section class="seminar-overview">
-    <h2>セミナー概要</h2>
-    <h3>概要説明</h3>
-    <p>
-      本セミナーでは、最新のAI技術動向、実際のビジネス事例、そしてAIを活用した業務改善の方法を解説します。<br>
-      参加者は、AIの基礎から応用まで幅広い知識を得ることができ、<br>
-      技術革新がもたらすビジネスチャンスを具体的に理解することが可能です。
-    </p>
-    <h3>セミナーの目的</h3>
-    <p>
-      本セミナーの目的は、AIの使い方を学ぶことにより、<br>
-      参加者が自社の課題解決や新規事業創出に向けたアイデアを得られるよう、<br>
-      具体的な事例や実践的なノウハウを提供することです。<br>
-      これにより、参加者は自社におけるAI活用の可能性を再評価し、戦略的なイノベーションを推進する一助となります。
-    </p>
-  </section>
-
-<!-- 日時・場所・参加方法セクション -->
-  <section class="seminar-details">
+    <!-- 予約フォーム埋め込みセクション -->
+    <section class="reservation-form">
+      <h2>予約フォーム</h2>
+      <!-- aitemasu embed begin -->
+      <iframe src="https://app.aitemasu.me/u/unszzmm2/AIworkshop?embed=1&color=normal&calendaronly=1&utm_source=embed&utm_medium=iframe" width="100%" height="770px" style="border: none; overflow: hidden;" frameborder="0"></iframe>
+      <!-- aitemasu embed end -->
+    </section>
+    
+    <!-- セミナー概要セクション -->
+    <section class="seminar-overview">
+      <h2>セミナー概要</h2>
+      <h3>概要説明</h3>
+      <p>
+        本セミナーでは、最新のAI技術動向、実際のビジネス事例、そしてAIを活用した業務改善の方法を解説します。<br>
+        参加者は、AIの基礎から応用まで幅広い知識を得ることができ、<br>
+        技術革新がもたらすビジネスチャンスを具体的に理解することが可能です。
+      </p>
+      <h3>セミナーの目的</h3>
+      <p>
+        本セミナーの目的は、AIの使い方を学ぶことにより、<br>
+        参加者が自社の課題解決や新規事業創出に向けたアイデアを得られるよう、<br>
+        具体的な事例や実践的なノウハウを提供することです。<br>
+        これにより、参加者は自社におけるAI活用の可能性を再評価し、戦略的なイノベーションを推進する一助となります。
+      </p>
+    </section>
+    
+    <!-- 日時・場所・参加方法セクション -->
+    <section class="seminar-details">
+      <!-- 各セクションで独自の背景アニメーション（立体的な幾何学図形）を疑似要素で演出 -->
       <canvas class="particle-canvas"></canvas>
-    <h2>日時・場所・参加方法</h2>
-
-    <div class="detail-item">
-      <h3>日時</h3>
-      <p>
-        セミナー開催の日付・時間は、下記のカレンダーからご予約いただけます。
-      </p>
-      <a href="#" class="calendar-btn">カレンダーから予約</a>
-    </div>
-
-    <div class="detail-item">
-      <h3>場所</h3>
-      <p>
-        オンライン開催（Zoomを利用予定）
-      </p>
-    </div>
-
-    <div class="detail-item">
-      <h3>参加方法</h3>
-      <p>
-        ウェビナー形式にて実施いたします。ご予約完了後、参加URLをメールにてご案内いたします。
-      </p>
-    </div>
-
-    <div class="detail-item">
-      <h3>参加費</h3>
-      <p>
-        ¥5000（税込）
-      </p>
-    </div>
-
-    <div class="detail-item">
-      <h3>申し込み条件</h3>
-      <p>
-        事前登録が必要です。参加人数に制限がございますので、お早めにお申し込みください。
-      </p>
-    </div>
-  </section>
-
-  
-<!-- 講師紹介セクション -->
-  <section id="instructor" class="instructor-section">
-    <div class="instructor-container">
-      <!-- 左カラム：プロフィール写真 -->
-      <div class="instructor-photo">
-        <!-- ここでは仮の画像URLを使用。実際はご自身の画像パスに変更してください -->
-        <img src="images/maruyama.jpg" alt="講師 丸山勇大">
+      <h2>日時・場所・参加方法</h2>
+      <div class="details-container">
+        <div class="detail-item">
+          <h3>日時</h3>
+          <p>
+            セミナー開催の日付・時間は、下記のカレンダーからご予約いただけます。
+          </p>
+          <a href="#" class="calendar-btn">カレンダーから予約</a>
+        </div>
+        <div class="detail-item">
+          <h3>場所</h3>
+          <p>
+            オンライン開催（Zoomを利用予定）
+          </p>
+        </div>
+        <div class="detail-item">
+          <h3>参加方法</h3>
+          <p>
+            ウェビナー形式にて実施いたします。ご予約完了後、参加URLをメールにてご案内いたします。
+          </p>
+        </div>
+        <div class="detail-item">
+          <h3>参加費</h3>
+          <p>
+            ¥5000（税込）
+          </p>
+        </div>
+        <div class="detail-item">
+          <h3>申し込み条件</h3>
+          <p>
+            事前登録が必要です。参加人数に制限がございますので、お早めにお申し込みください。
+          </p>
+        </div>
       </div>
-      <!-- 右カラム：講師情報 -->
-      <div class="instructor-info">
-        <h2>丸山勇大</h2>
-        <h3>AIクリエイター</h3>
-        <p>
-          丸山勇大は、AIを活用したアプリ開発や企画などを手掛けるAIクリエイターです。<br>
-          最新の技術を駆使して革新的なプロジェクトを実現し、参加者に実践的な知識と戦略を伝授します。
-        </p>
+    </section>
+    
+    <!-- 講師紹介セクション -->
+    <section id="instructor" class="instructor-section">
+      <div class="instructor-container">
+        <div class="instructor-photo">
+          <img src="images/maruyama.jpg" alt="講師 丸山勇大">
+        </div>
+        <div class="instructor-info">
+          <h2>丸山勇大</h2>
+          <h3>AIクリエイター</h3>
+          <p>
+            丸山勇大は、AIを活用したアプリ開発や企画などを手掛けるAIクリエイターです。<br>
+            最新の技術を駆使して革新的なプロジェクトを実現し、参加者に実践的な知識と戦略を伝授します。
+          </p>
+        </div>
       </div>
-    </div>
-  </section>
-  
-
-  <!-- セミナーお申込みフォーム -->
-  <section id="entry" style="padding: 40px; background-color: #fff;">
-    <h2>セミナーお申込みフォーム</h2>
-    <p>ここに申し込みフォームなどを配置します。</p>
-  </section>
+    </section>
+    
+    <!-- セミナーお申込みフォームセクション -->
+    <section id="entry" class="entry-section">
+      <h2>セミナーお申込みフォーム</h2>
+      <p>ここに申し込みフォームなどを配置します。</p>
+    </section>
+  </div>
   
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
