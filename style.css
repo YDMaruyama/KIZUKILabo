@@ -11,18 +11,6 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ヘッダー */
-header {
-  width: 100%;
-  background-color: #fff;
-  padding: 20px 30px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 2;
-}
-header h1 {
-  font-size: 1.8rem;
-}
 
 
 /* Particle背景（全体背景のアニメーション） */
