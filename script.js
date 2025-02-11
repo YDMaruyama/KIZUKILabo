@@ -73,6 +73,21 @@ const iconData = [
     description: "システムが自己学習し、継続的に最適化"
   }
 ];
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+      }
+    });
+  }, { threshold: 0.3 });  // セクションの30%が表示されたら発火
+
+  document.querySelectorAll('.seminar-overview').forEach(section => {
+    observer.observe(section);
+  });
+});
+</script>
 
 const iconGrid = document.getElementById("iconGrid");
 iconData.forEach(data => {
@@ -95,4 +110,21 @@ iconData.forEach(data => {
   
   iconGrid.appendChild(card);
 });
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+      }
+    });
+  }, { threshold: 0.3 });  // セクションの30%が表示されたら発火
+
+  document.querySelectorAll('.seminar-overview').forEach(section => {
+    observer.observe(section);
+  });
+});
+</script>
+
 
