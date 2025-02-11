@@ -11,158 +11,220 @@ html, body {
   overflow-x: hidden;
 }
 
-/* =====================
-   全体背景（particles.js 用）
-===================== */
+/* ヘッダー */
+header {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+}
+header h1 {
+  font-size: 1.8rem;
+}
+
+
+/* Particle背景（全体背景のアニメーション） */
 #particles-js {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2;
+  z-index: 0;
 }
-
-/* =====================
-   メインコンテンツ
-===================== */
-.content {
-  position: relative;
-  z-index: 1;
-}
-
-/* =====================
-   ヘッダー
-===================== */
-header {
-  padding: 20px;
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 /* =====================
    ヒーローセクション
 ===================== */
 .hero {
+  position: relative;
+  background-color: #56c0b5;
+  color: #fff;
+  padding: 100px 20px;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 70vh;
-  padding: 20px;
+  overflow: hidden;
 }
-
+/* ヒーローコンテナ */
 .hero-container {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-left {
-  flex: 1 1 500px;
+  flex-wrap: wrap;
   padding: 20px;
+}
+/* 左カラム：テキスト＆CTAボタン */
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
 }
 
 .hero-left h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   margin-bottom: 20px;
+  line-height: 1.2;
 }
-
-.hero-left p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
+.hero-left h1 .line-break {
+  display: none; /* スマホでは改行なし */
 }
-
+@media screen and (min-width: 769px) {
+  .hero-left h1 .line-break {
+    display: inline;
+  }
+}
+.lead-copy {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  white-space: pre-wrap;
+}
+@media screen and (min-width: 769px) {
+  .lead-copy span {
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .lead-copy span {
+    display: inline;
+  }
+}
 .cta-button {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
+  padding: 14px 28px;
+  background-color: #ff6600;
   color: #fff;
+  font-size: 1.2rem;
   text-decoration: none;
   border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.cta-button:hover {
+  background-color: #e65c00;
+  transform: translateY(-2px);
 }
 
-/* アイコングリッド（右カラム） */
-.hero-right {
-  flex: 1 1 300px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-}
-
-.icon-card {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 4px;
-  padding: 10px;
-  text-align: center;
-  flex: 1 1 120px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.icon-card i {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #007bff;
-}
 
 /* =====================
-   予約フォームセクション
+   ヒーロー右カラム（アイコン＆説明文グリッド）
 ===================== */
-.reservation-form {
-  margin: 40px auto;
-  max-width: 800px;
+.hero-right {
+  flex: 1;
+  min-width: 300px;
   padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 30px;
+}
+.icon-card {
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.icon-card:hover {
+  transform: scale(1.05);
+}
+.icon-card i {
+  font-size: 60px;
+  margin-bottom: 10px;
+  transition: transform 0.2s;
+}
+.icon-card:hover i {
+  animation: shake 0.5s;
+}
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+.icon-card .description {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+
+/* =====================
+   セクション共通の背景アニメーション（先進的な幾何学パターン）
+===================== */
+.section-bg {
+  position: relative;
+  overflow: hidden;
+}
+.section-bg::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><polygon points="0,0 200,0 100,200" fill="rgba(0,166,81,0.1)"/></svg>') repeat;
+  background-size: 100px 100px;
+  opacity: 0.3;
+  animation: rotateShape 30s linear infinite;
+  z-index: -1;
+}
+@keyframes rotateShape {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* =====================
-   セミナー概要セクション
-   背景：白 / 内側の背景：緑
+   セミナー概要セクション（背景： 緑、内側の背景： 白）
 ===================== */
 .seminar-overview {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px 30px;
-  background-color: #fff;
+  background-color: #fff;  /* 背景を白に */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
 }
 
+/* 内側のコンテンツ部分（HTML側で .inner-content でラップしてください） */
 .seminar-overview .inner-content {
-  background-color: #56c0b5;
+  background-color: #56c0b5;  /* 内側は緑 */
   padding: 20px;
   border-radius: 4px;
 }
 
+
 /* =====================
-   「日時・場所・参加方法」セクション
-   背景：白 / 内側の背景：緑
-   ※ 背景として Canvas による粒子アニメーションを配置
+   「日時・場所・参加方法」セクション（背景： 緑、内側の背景： 白）
 ===================== */
 .seminar-details {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px 30px;
-  background-color: #fff;
+  background-color: #fff;  /* 背景を白に */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
-  padding-top: 20px;
+  padding-top: 20px;  /* 上部余白を調整 */
 }
-
 .seminar-details .inner-content {
-  background-color: #56c0b5;
+  background-color: #56c0b5;  /* 内側は緑 */
   padding: 20px;
   border-radius: 4px;
 }
 
-/* テキストカラー（内側は緑色） */
+/* 日時セクション内のテキストも内側では暗い色に */
 .seminar-details .inner-content,
 .seminar-details .inner-content h2,
 .seminar-details .inner-content h3,
@@ -171,100 +233,105 @@ header {
   color: #56c0b5;
 }
 
-/* Canvas（粒子アニメーション）を背景として設定 */
-.seminar-details .particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
 
 /* =====================
    講師紹介セクション
 ===================== */
 .instructor-section {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 60px 20px;
+  color: #333;
 }
-
 .instructor-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  flex-wrap: wrap;
+  gap: 40px;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
 }
-
-.instructor-photo img {
-  max-width: 200px;
-  border-radius: 50%;
-}
-
-.instructor-info {
+.instructor-photo {
   flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+.instructor-photo img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.instructor-info {
+  flex: 2;
+  min-width: 300px;
+}
+.instructor-info h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+.instructor-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #56c0b5;
+}
+.instructor-info p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* =====================
+   レスポンシブ調整
+===================== */
+@media screen and (max-width: 768px) {
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
+  .hero-left p {
+    font-size: 1.1rem;
+  }
+  .instructor-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .instructor-info h2 {
+    font-size: 2rem;
+  }
+  .instructor-info p {
+    font-size: 1rem;
+  }
 }
 
 /* =====================
    セミナーお申込みフォームセクション
 ===================== */
 .entry-section {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 40px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 /* =====================
-   共通の背景アニメーション（先進的な幾何学パターン）
+   Footer（フッター）
 ===================== */
-.section-bg::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cpolygon%20points='0,0%20200,0%20100,200'%20fill='rgba(0,166,81,0.1)'/%3E%3C/svg%3E") repeat;
-  background-size: 100px 100px;
-  opacity: 0.3;
-  animation: rotateShape 30s linear infinite;
-  z-index: -1;
-}
+/* ※フッターは既存のコードのまま */
+注意点：
 
-/* 回転アニメーション */
-@keyframes rotateShape {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+HTML 側で概要セクション（.seminar-overview）と日時セクション（.seminar-details）の中身は、例えば以下のようにラップしてください。
+html
+コピーする
+<section class="seminar-overview">
+  <div class="inner-content">
+    <h2>セミナー概要</h2>
+    <p>ここにセミナーの概要説明を入れます。</p>
+  </div>
+</section>
 
-/* =====================
-   カレンダーボタン
-===================== */
-.calendar-btn {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-/* =====================
-   レスポンシブ対応
-===================== */
-@media (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-  }
-  .hero-left, .hero-right {
-    flex: 1 1 100%;
-  }
-}
+<section class="seminar-details">
+  <div class="inner-content">
+    <h2>日時・場所・参加方法</h2>
+    <div class="details-container">
+      <!-- 各 detail-item を配置 -->
+    </div>
+  </div>
+</section>
