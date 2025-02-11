@@ -11,8 +11,6 @@ html, body {
   overflow-x: hidden;
 }
 
-
-
 /* Particle背景（全体背景のアニメーション） */
 #particles-js {
   position: absolute;
@@ -22,6 +20,14 @@ html, body {
   height: 100%;
   z-index: -2;
 }
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;  /* 画面全体をカバー */
+  padding: 20px;
+
+   
 /* =====================
    ヒーローセクション
 ===================== */
