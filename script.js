@@ -119,63 +119,64 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-// --- Canvas を利用した粒子アニメーション（セミナー詳細背景） ---
 window.addEventListener('load', function() {
-  const canvas = document.querySelector('.particle-canvas');
-  if (!canvas) return;  // Canvas が存在しない場合は処理中止
+  // すべての .particle-canvas 要素を取得
+  const canvases = document.querySelectorAll('.particle-canvas');
+  if (canvases.length === 0) return;  // Canvas が存在しなければ処理中止
 
-  const ctx = canvas.getContext('2d');
+  canvases.forEach(canvas => {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-  // ★ まず、変数 particles を宣言（initParticles() で使用します） ★
-  let particles = []; 
-
-  // ★ particles を初期化する関数を定義 ★
-  function initParticles() {
-    particles = [];
-    const cols = 20;  // 横方向の粒子数
-    const rows = 10;  // 縦方向の粒子数
-    const spacingX = canvas.width / (cols - 1);
-    const spacingY = canvas.height / (rows - 1);
-    for (let i = 0; i < cols; i++) {
-      for (let j = 0; j < rows; j++) {
-        particles.push({
-          baseX: i * spacingX,
-          baseY: j * spacingY,
-          size: 2,
-          phase: Math.random() * Math.PI * 2  // ランダムな位相
-        });
+    // 粒子を初期化する関数
+    function initParticles() {
+      particles = [];
+      const cols = 20;  // 横方向の粒子数
+      const rows = 10;  // 縦方向の粒子数
+      const spacingX = canvas.width / (cols - 1);
+      const spacingY = canvas.height / (rows - 1);
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          particles.push({
+            baseX: i * spacingX,
+            baseY: j * spacingY,
+            size: 2,
+            phase: Math.random() * Math.PI * 2  // ランダムな位相
+          });
+        }
       }
     }
-  }
 
-  // --- Canvas サイズの設定 ---
-  function resize() {
-    if (canvas.parentElement) {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-      initParticles(); // サイズ変更時に粒子を再配置
+    // Canvas サイズの設定
+    function resize() {
+      if (canvas.parentElement) {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+        initParticles(); // サイズ変更時に粒子を再配置
+      }
     }
-  }
-  window.addEventListener('resize', resize);
-  resize();  // 初期サイズ設定と粒子配置
+    window.addEventListener('resize', resize);
+    resize();  // 初期サイズ設定と粒子配置
 
-  let time = 0;
-  function animate() {
-    time += 0.05;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      // サイン波で垂直方向に動かす
-      const amplitude = 10;          // 振幅（波の高さ）
-      const frequency = 0.05;        // 変動の速さ
-      const offset = amplitude * Math.sin(time + p.phase + p.baseX * frequency);
-      const x = p.baseX;
-      const y = p.baseY + offset;
-      ctx.beginPath();
-      ctx.arc(x, y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 123, 255, 0.6)';
-      ctx.fill();
-    });
-    requestAnimationFrame(animate);
-  }
-  animate();
+    let time = 0;
+    // アニメーション関数
+    function animate() {
+      time += 0.05;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        // サイン波で垂直方向に動かす
+        const amplitude = 10;          // 振幅（波の高さ）
+        const frequency = 0.05;        // 変動の速さ
+        const offset = amplitude * Math.sin(time + p.phase + p.baseX * frequency);
+        const x = p.baseX;
+        const y = p.baseY + offset;
+        ctx.beginPath();
+        ctx.arc(x, y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 123, 255, 0.6)';
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  });
 });
