@@ -25,7 +25,7 @@ html, body {
   z-index: 1;
   min-height: 100vh;  /* 画面全体をカバー */
   padding: 20px;
-   
+background-color: red;
 
 
 
