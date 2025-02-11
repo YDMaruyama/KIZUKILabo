@@ -73,7 +73,7 @@ const iconData = [
     description: "システムが自己学習し、継続的に最適化"
   }
 ];
-<script>
+
 document.addEventListener("DOMContentLoaded", function() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(section);
   });
 });
-</script>
+
 
 const iconGrid = document.getElementById("iconGrid");
 iconData.forEach(data => {
@@ -111,7 +111,7 @@ iconData.forEach(data => {
   iconGrid.appendChild(card);
 });
 
-<script>
+
 document.addEventListener("DOMContentLoaded", function() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -125,9 +125,9 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(section);
   });
 });
-</script>
 
-<script>
+
+
 window.addEventListener('load', function() {
   const canvas = document.querySelector('.particle-canvas');
   const ctx = canvas.getContext('2d');
@@ -182,5 +182,5 @@ window.addEventListener('load', function() {
   }
   animate();
 });
-</script>
+
 
