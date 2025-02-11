@@ -1,4 +1,6 @@
-/* 全体の基本設定 */
+/* =====================
+   全体の基本設定
+===================== */
 html, body {
   margin: 0;
   padding: 0;
@@ -22,7 +24,9 @@ header h1 {
   font-size: 1.8rem;
 }
 
-/* ヒーローセクション */
+/* =====================
+   ヒーローセクション
+===================== */
 .hero {
   position: relative;
   background-color: #56c0b5;
@@ -149,23 +153,49 @@ header h1 {
   margin-top: 10px;
 }
 
-/* セミナーお申込みフォームセクション */
-.entry-section {
-  padding: 40px;
-  background-color: #fff;
-  text-align: center;
+/* =====================
+   セクション共通の背景アニメーション（先進的な幾何学パターン）
+===================== */
+.section-bg {
+  position: relative;
+  overflow: hidden;
+}
+.section-bg::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><polygon points="0,0 200,0 100,200" fill="rgba(0,166,81,0.1)"/></svg>') repeat;
+  background-size: 100px 100px;
+  opacity: 0.3;
+  animation: rotateShape 30s linear infinite;
+  z-index: -1;
+}
+@keyframes rotateShape {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* セミナー概要セクション */
+/* =====================
+   セミナー概要セクション（背景： #56c0b5、コンパクトな余白）
+===================== */
 .seminar-overview {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
-  padding: 40px;
-  background-color: #fff;
+  padding: 20px 30px;
+  background-color: #56c0b5;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
+}
+.seminar-overview,
+.seminar-overview h2,
+.seminar-overview h3,
+.seminar-overview p {
+  color: #fff;
 }
 .seminar-overview::before {
   content: "";
@@ -187,33 +217,40 @@ header h1 {
 }
 .seminar-overview h2 {
   font-size: 2em;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.7);
   padding-bottom: 10px;
 }
 .seminar-overview h3 {
   font-size: 1.5em;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 10px;
-  color: #555;
 }
 .seminar-overview p {
   font-size: 1em;
-  margin-bottom: 20px;
-  color: #666;
+  margin-bottom: 10px;
   line-height: 1.6;
 }
 
-/* 「日時・場所・参加方法」セクション */
+/* =====================
+   「日時・場所・参加方法」セクション（背景： #56c0b5、コンパクト）
+===================== */
 .seminar-details {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
-  padding: 40px;
-  background-color: #fff;
+  padding: 20px 30px;
+  background-color: #56c0b5;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
+}
+.seminar-details,
+.seminar-details h2,
+.seminar-details h3,
+.seminar-details p,
+.seminar-details a {
+  color: #fff;
 }
 .particle-canvas {
   position: absolute;
@@ -230,8 +267,8 @@ header h1 {
 }
 .seminar-details h2 {
   font-size: 2em;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #e2e2e2;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.7);
   padding-bottom: 10px;
 }
 .details-container {
@@ -242,37 +279,37 @@ header h1 {
 .detail-item h3 {
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: #555;
 }
 .detail-item p {
   font-size: 1em;
-  color: #666;
   margin-bottom: 10px;
 }
 .calendar-btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007BFF;
+  background-color: rgba(0,123,255,0.7);
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
 }
 .calendar-btn:hover {
-  background-color: #0056b3;
+  background-color: rgba(0,123,255,0.9);
 }
 
-/* 講師紹介セクション */
+/* =====================
+   講師紹介セクション（背景： #56c0b5、コンパクト）
+===================== */
 .instructor-section {
-  background-color: #fff;
-  padding: 60px 20px;
-  color: #333;
+  background-color: #56c0b5;
+  padding: 20px;
+  color: #fff;
 }
 .instructor-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -299,38 +336,26 @@ header h1 {
 .instructor-info h3 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #56c0b5;
+  color: rgba(255,255,255,0.8);
 }
 .instructor-info p {
   font-size: 1.2rem;
   line-height: 1.8;
 }
 
-/* 共通：先進的な幾何学図形背景アニメーション */
-/* .section-bg を各セクションに追加することで、動的な背景パターンが表示されます */
-.section-bg {
-  position: relative;
-  overflow: hidden;
-}
-.section-bg::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><polygon points="0,0 200,0 100,200" fill="rgba(0,166,81,0.1)"/></svg>') repeat;
-  background-size: 100px 100px;
-  opacity: 0.3;
-  animation: rotateShape 30s linear infinite;
-  z-index: -1;
-}
-@keyframes rotateShape {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* =====================
+   セミナーお申込みフォームセクション（背景： #56c0b5、コンパクト）
+===================== */
+.entry-section {
+  padding: 20px;
+  background-color: #56c0b5;
+  text-align: center;
+  color: #fff;
 }
 
-/* レスポンシブ調整 */
+/* =====================
+   レスポンシブ調整
+===================== */
 @media screen and (max-width: 768px) {
   .hero-left h1 {
     font-size: 2.5rem;
