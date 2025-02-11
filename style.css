@@ -162,9 +162,16 @@ header h1 {
   text-align: center;
 }
 
+.seminar-overview {
+  max-width: 800px;          /* 横幅の最大値を設定 */
+  margin: 40px auto;         /* 上下に余白、中央寄せ */
+  padding: 40px;             /* 内側の余白 */
+  background-color: #fff;    /* 背景色を白に */
+  border-radius: 8px;        /* 角を丸く */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影を付与 */
+}
 
-
-/* セミナー概要セクション */
+/* セミナー概要セクションの見出し */
 .seminar-overview h2 {
   font-size: 2em;
   margin-bottom: 20px;
@@ -172,6 +179,7 @@ header h1 {
   padding-bottom: 10px;
 }
 
+/* セミナー概要セクションのサブ見出し */
 .seminar-overview h3 {
   font-size: 1.5em;
   margin-top: 30px;
@@ -179,10 +187,12 @@ header h1 {
   color: #555;
 }
 
+/* セミナー概要セクションのテキスト */
 .seminar-overview p {
   font-size: 1em;
   margin-bottom: 20px;
   color: #666;
+  line-height: 1.6;  /* 読みやすさのため行間を調整 */
 }
 
 /* 「日時・場所・参加方法」セクション全体のスタイル */
