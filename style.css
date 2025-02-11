@@ -152,7 +152,15 @@ html, body {
 /* =====================
    セミナー概要セクション（外側背景：緑、内側背景：白）
 ===================== */
-
+.seminar-overview {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background-color: #56c0b5; /* 外側背景：緑 */
+  border-radius: 8px;
+  overflow: hidden;
+}
 .seminar-overview .particle-canvas {
   position: absolute;
   top: 0;
