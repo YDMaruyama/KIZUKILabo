@@ -1,4 +1,7 @@
-// Particles.jsの設定
+// デバッグ用ログ
+console.log("script.js が読み込まれました。");
+
+// --- Particles.js の設定 ---
 particlesJS("particles-js", {
   "particles": {
     "number": {
@@ -40,7 +43,7 @@ particlesJS("particles-js", {
   "retina_detect": true
 });
 
-// FontAwesomeのアイコンと具体的ベネフィットのデータ
+// --- アイコンと具体的ベネフィットのデータ ---
 const iconData = [
   {
     iconClass: "fa-solid fa-gear",
@@ -74,75 +77,68 @@ const iconData = [
   }
 ];
 
+// --- DOMContentLoaded で各処理を実行 ---
 document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM の読み込み完了。初期化処理を開始します。");
+
+  // IntersectionObserver によるアニメーション処理（セミナー概要）
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
       }
     });
-  }, { threshold: 0.3 });  // セクションの30%が表示されたら発火
-
+  }, { threshold: 0.3 });
   document.querySelectorAll('.seminar-overview').forEach(section => {
     observer.observe(section);
   });
-});
 
-
-const iconGrid = document.getElementById("iconGrid");
-iconData.forEach(data => {
-  const card = document.createElement("div");
-  card.className = "icon-card";
-  
-  const iconEl = document.createElement("i");
-  iconEl.className = data.iconClass;
-  
-  const titleEl = document.createElement("div");
-  titleEl.innerHTML = `<strong>${data.title}</strong>`;
-  
-  const descEl = document.createElement("div");
-  descEl.className = "description";
-  descEl.textContent = data.description;
-  
-  card.appendChild(iconEl);
-  card.appendChild(titleEl);
-  card.appendChild(descEl);
-  
-  iconGrid.appendChild(card);
-});
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-      }
+  // ヒーロー右カラムにアイコングリッドを生成
+  const iconGrid = document.getElementById("iconGrid");
+  if (iconGrid) {
+    iconData.forEach(data => {
+      const card = document.createElement("div");
+      card.className = "icon-card";
+      
+      const iconEl = document.createElement("i");
+      iconEl.className = data.iconClass;
+      
+      const titleEl = document.createElement("div");
+      titleEl.innerHTML = `<strong>${data.title}</strong>`;
+      
+      const descEl = document.createElement("div");
+      descEl.className = "description";
+      descEl.textContent = data.description;
+      
+      card.appendChild(iconEl);
+      card.appendChild(titleEl);
+      card.appendChild(descEl);
+      
+      iconGrid.appendChild(card);
     });
-  }, { threshold: 0.3 });  // セクションの30%が表示されたら発火
-
-  document.querySelectorAll('.seminar-overview').forEach(section => {
-    observer.observe(section);
-  });
+  }
 });
 
-
-
+// --- Canvas を利用した粒子アニメーション（セミナー詳細背景） ---
 window.addEventListener('load', function() {
   const canvas = document.querySelector('.particle-canvas');
+  if (!canvas) return;  // Canvasが存在しない場合は処理中止
+
   const ctx = canvas.getContext('2d');
 
   // Canvasサイズの設定
   function resize() {
-    canvas.width = canvas.parentElement.offsetWidth;
-    canvas.height = canvas.parentElement.offsetHeight;
-    initParticles(); // サイズ変更時に粒子の配置を再計算
+    if (canvas.parentElement) {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      initParticles(); // サイズ変更時に粒子の配置を再計算
+    }
   }
   window.addEventListener('resize', resize);
   resize();
 
   let particles = [];
-  // グリッド状に粒子を配置
+  // グリッド状に粒子を配置する関数
   function initParticles() {
     particles = [];
     const cols = 20;  // 横方向の粒子数
@@ -166,7 +162,7 @@ window.addEventListener('load', function() {
   function animate() {
     time += 0.05;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (const p of particles) {
+    particles.forEach(p => {
       // サイン波で垂直方向に動かす
       const amplitude = 10;          // 振幅（波の高さ）
       const frequency = 0.05;        // 変動の速さ（横位置との相関）
@@ -175,12 +171,10 @@ window.addEventListener('load', function() {
       const y = p.baseY + offset;
       ctx.beginPath();
       ctx.arc(x, y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 123, 255, 0.6)';  // 粒の色（必要に応じて変更）
+      ctx.fillStyle = 'rgba(0, 123, 255, 0.6)';
       ctx.fill();
-    }
+    });
     requestAnimationFrame(animate);
   }
   animate();
 });
-
-
