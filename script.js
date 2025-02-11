@@ -122,23 +122,12 @@ document.addEventListener("DOMContentLoaded", function() {
 // --- Canvas を利用した粒子アニメーション（セミナー詳細背景） ---
 window.addEventListener('load', function() {
   const canvas = document.querySelector('.particle-canvas');
-  if (!canvas) return;  // Canvasが存在しない場合は処理中止
+  if (!canvas) return;  // Canvas が存在しない場合は処理中止
 
   const ctx = canvas.getContext('2d');
 
-  // Canvasサイズの設定
-  function resize() {
-    if (canvas.parentElement) {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
-      initParticles(); // サイズ変更時に粒子の配置を再計算
-    }
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
+  // ★ ここでまず変数と初期化関数を定義する ★
   let particles = [];
-  // グリッド状に粒子を配置する関数
   function initParticles() {
     particles = [];
     const cols = 20;  // 横方向の粒子数
@@ -151,12 +140,22 @@ window.addEventListener('load', function() {
           baseX: i * spacingX,
           baseY: j * spacingY,
           size: 2,
-          phase: Math.random() * Math.PI * 2  // 各粒子にランダムな位相を設定
+          phase: Math.random() * Math.PI * 2  // ランダムな位相
         });
       }
     }
   }
-  initParticles();
+
+  // --- Canvas サイズの設定 ---
+  function resize() {
+    if (canvas.parentElement) {
+      canvas.width = canvas.parentElement.offsetWidth;
+      canvas.height = canvas.parentElement.offsetHeight;
+      initParticles(); // サイズ変更時に粒子の再配置
+    }
+  }
+  window.addEventListener('resize', resize);
+  resize();  // ここで初期サイズ設定＆粒子配置
 
   let time = 0;
   function animate() {
@@ -165,7 +164,7 @@ window.addEventListener('load', function() {
     particles.forEach(p => {
       // サイン波で垂直方向に動かす
       const amplitude = 10;          // 振幅（波の高さ）
-      const frequency = 0.05;        // 変動の速さ（横位置との相関）
+      const frequency = 0.05;        // 変動の速さ
       const offset = amplitude * Math.sin(time + p.phase + p.baseX * frequency);
       const x = p.baseX;
       const y = p.baseY + offset;
