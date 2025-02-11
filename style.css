@@ -164,10 +164,12 @@ html, body {
 }
 
 /* 内側のコンテンツ部分（HTML側で .inner-content でラップしてください） */
-.seminar-overview .inner-content {
+seminar-overview .inner-content,
+.seminar-details .inner-content {
   background-color: #56c0b5;  /* 内側は緑 */
   padding: 20px;
   border-radius: 4px;
+  z-index: 1;
 }
 
 /* 概要セクションのテキストは、内側コンテンツでは暗い色に（例：#333） */
