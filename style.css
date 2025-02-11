@@ -175,7 +175,7 @@ header h1 {
   background-size: 100px 100px;
   opacity: 0.3;
   animation: rotateShape 30s linear infinite;
-  z-index: -1;
+  z-index: 0;
 }
 @keyframes rotateShape {
   from { transform: rotate(0deg); }
@@ -318,27 +318,3 @@ header h1 {
   text-align: center;
 }
 
-/* =====================
-   Footer（フッター）
-===================== */
-/* ※フッターは既存のコードのまま */
-注意点：
-
-HTML 側で概要セクション（.seminar-overview）と日時セクション（.seminar-details）の中身は、例えば以下のようにラップしてください。
-html
-コピーする
-<section class="seminar-overview">
-  <div class="inner-content">
-    <h2>セミナー概要</h2>
-    <p>ここにセミナーの概要説明を入れます。</p>
-  </div>
-</section>
-
-<section class="seminar-details">
-  <div class="inner-content">
-    <h2>日時・場所・参加方法</h2>
-    <div class="details-container">
-      <!-- 各 detail-item を配置 -->
-    </div>
-  </div>
-</section>
