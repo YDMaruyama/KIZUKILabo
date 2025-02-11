@@ -6,6 +6,7 @@
   <title>AIセミナー</title>
   <!-- FontAwesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 独自のスタイルシート -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,8 +34,8 @@
           </p>
           <a href="#entry" class="cta-button">今すぐセミナーに申し込む</a>
         </div>
-        <!-- 右カラム：アイコングリッド（必要に応じて内容を追加） -->
-        <div class="hero-right" id="iconGrid"> </div>
+        <!-- 右カラム：アイコングリッド（JavaScriptで生成） -->
+        <div class="hero-right" id="iconGrid"></div>
       </div>
     </section>
 
@@ -65,7 +66,7 @@
     
     <!-- 日時・場所・参加方法セクション -->
     <section class="seminar-details">
-      <!-- 各セクションで独自の背景アニメーション（立体的な幾何学図形）を疑似要素で演出 -->
+      <!-- 独自の背景アニメーション用Canvas -->
       <canvas class="particle-canvas"></canvas>
       <h2>日時・場所・参加方法</h2>
       <div class="details-container">
@@ -127,8 +128,9 @@
     </section>
   </div>
   
+  <!-- particles.js CDN -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- 独自スクリプト -->
   <script src="script.js"></script>
 </body>
 </html>
-
