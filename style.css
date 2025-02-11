@@ -150,33 +150,66 @@ html, body {
 }
 
 /* =====================
-   セミナー概要セクション（背景： 緑、内側の背景： 白）
+   セミナー概要セクション（外側背景：緑、内側背景：白）
 ===================== */
 .seminar-overview {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px 30px;
-  background-color: #fff;  /* 背景を白に */
+  background-color: #56c0b5; /* 外側背景：緑 */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
 }
-
-/* 内側のコンテンツ部分（HTML側で .inner-content でラップしてください） */
-seminar-overview .inner-content, {
-  background-color: #56c0b5;  /* 内側は緑 */
+.seminar-overview .particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.seminar-overview .inner-content {
+  position: relative;
+  z-index: 1;
+  background-color: #fff; /* 内側背景：白 */
   padding: 20px;
   border-radius: 4px;
-  z-index: 0;
+  color: #333;  /* テキストカラー：ダーク */
 }
 
-/* 概要セクションのテキストは、内側コンテンツでは暗い色に（例：#333） */
-.seminar-overview .inner-content,
-.seminar-overview .inner-content h2,
-.seminar-overview .inner-content h3,
-.seminar-overview .inner-content p {
-  color: #56c0b5;
+/* =====================
+   「日時・場所・参加方法」セクション（外側背景：緑、内側背景：白）
+===================== */
+.seminar-details {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background-color: #56c0b5; /* 外側背景：緑 */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  padding-top: 20px;
+}
+.seminar-details .particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.seminar-details .inner-content {
+  position: relative;
+  z-index: 1;
+  background-color: #fff; /* 内側背景：白 */
+  padding: 20px;
+  border-radius: 4px;
+  color: #333;  /* テキストカラー：ダーク */
 }
 
 /* =====================
@@ -202,35 +235,6 @@ seminar-overview .inner-content, {
 @keyframes rotateShape {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-   
-/* =====================
-   「日時・場所・参加方法」セクション（背景： 緑、内側の背景： 白）
-===================== */
-.seminar-details {
-  position: relative;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px 30px;
-  background-color: #fff;  /* 背景を白に */
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  padding-top: 20px;  /* 上部余白を調整 */
-}
-.seminar-details .inner-content {
-  background-color: #56c0b5;  /* 内側は緑 */
-  padding: 20px;
-  border-radius: 4px;
-}
-
-/* 日時セクション内のテキストも内側では暗い色に */
-.seminar-details .inner-content,
-.seminar-details .inner-content h2,
-.seminar-details .inner-content h3,
-.seminar-details .inner-content p,
-.seminar-details .inner-content a {
-  color: #56c0b5;
 }
 
 
