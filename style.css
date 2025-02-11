@@ -179,137 +179,190 @@ header h1 {
 }
 
 /* =====================
-   セミナー概要セクション（背景： #56c0b5、コンパクトな余白）
+   セミナー概要セクション（背景： 緑、内側の背景： 白）
 ===================== */
 .seminar-overview {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px 30px;
-  background-color: #56c0b5;
+  background-color: green;  /* 背景を緑に */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
 }
-.seminar-overview,
-.seminar-overview h2,
-.seminar-overview h3,
-.seminar-overview p {
-  color: #fff;
+
+/* 内側のコンテンツ部分（HTML側で .inner-content でラップしてください） */
+.seminar-overview .inner-content {
+  background-color: #fff;  /* 内側は白 */
+  padding: 20px;
+  border-radius: 4px;
 }
-.seminar-overview::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, rgba(0,123,255,0.1) 25%, transparent 25%),
-              linear-gradient(-45deg, rgba(0,123,255,0.1) 25%, transparent 25%);
-  background-size: 50px 50px;
-  background-position: 0 0, 25px 25px;
-  transform: scale(0.5) rotate(0deg);
-  transition: transform 1s ease-out;
-  z-index: -1;
-}
-.seminar-overview.in-view::before {
-  transform: scale(1) rotate(45deg);
-}
-.seminar-overview h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  border-bottom: 2px solid rgba(255,255,255,0.7);
-  padding-bottom: 10px;
-}
-.seminar-overview h3 {
-  font-size: 1.5em;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.seminar-overview p {
-  font-size: 1em;
-  margin-bottom: 10px;
-  line-height: 1.6;
+
+/* 概要セクションのテキストは、内側コンテンツでは暗い色に（例：#333） */
+.seminar-overview .inner-content,
+.seminar-overview .inner-content h2,
+.seminar-overview .inner-content h3,
+.seminar-overview .inner-content p {
+  color: #333;
 }
 
 /* =====================
-   「日時・場所・参加方法」セクション（背景： #56c0b5、コンパクト）
+   「日時・場所・参加方法」セクション（背景： 緑、内側の背景： 白）
 ===================== */
 .seminar-details {
   position: relative;
   max-width: 800px;
   margin: 40px auto;
   padding: 20px 30px;
-  background-color: #56c0b5;
+  background-color: green;  /* 背景を緑に */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   overflow: hidden;
+  padding-top: 20px;  /* 上部余白を調整 */
 }
-.seminar-details,
-.seminar-details h2,
-.seminar-details h3,
-.seminar-details p,
-.seminar-details a {
-  color: #fff;
+.seminar-details .inner-content {
+  background-color: #fff;  /* 内側は白 */
+  padding: 20px;
+  border-radius: 4px;
 }
-.particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-.seminar-details > * {
-  position: relative;
-  z-index: 1;
-}
-.seminar-details h2 {
-  font-size: 2em;
-  margin-bottom: 10px;
-  border-bottom: 2px solid rgba(255,255,255,0.7);
-  padding-bottom: 10px;
-}
-.details-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-.detail-item h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-.detail-item p {
-  font-size: 1em;
-  margin-bottom: 10px;
-}
-.calendar-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: rgba(0,123,255,0.7);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-.calendar-btn:hover {
-  background-color: rgba(0,123,255,0.9);
+
+/* 日時セクション内のテキストも内側では暗い色に */
+.seminar-details .inner-content,
+.seminar-details .inner-content h2,
+.seminar-details .inner-content h3,
+.seminar-details .inner-content p,
+.seminar-details .inner-content a {
+  color: #333;
 }
 
 /* =====================
-   講師紹介セクション（背景： #56c0b5、コンパクト）
+   ヘッダー
+===================== */
+header {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+}
+header h1 {
+  font-size: 1.8rem;
+}
+
+/* =====================
+   ヒーローセクション
+===================== */
+.hero {
+  position: relative;
+  background-color: #56c0b5;
+  color: #fff;
+  padding: 100px 20px;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.hero-left {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+.hero-left h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.hero-left p {
+  font-size: 1.25rem;
+  margin-bottom: 30px;
+  white-space: pre-wrap;
+}
+.cta-button {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #ff6600;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.2s, transform 0.2s;
+}
+.cta-button:hover {
+  background-color: #e65c00;
+  transform: translateY(-2px);
+}
+
+/* =====================
+   ヒーロー右カラム（アイコン＆説明文グリッド）
+===================== */
+.hero-right {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 30px;
+}
+.icon-card {
+  background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.icon-card:hover {
+  transform: scale(1.05);
+}
+.icon-card i {
+  font-size: 60px;
+  margin-bottom: 10px;
+  transition: transform 0.2s;
+}
+.icon-card:hover i {
+  animation: shake 0.5s;
+}
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+.icon-card .description {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* =====================
+   講師紹介セクション
 ===================== */
 .instructor-section {
-  background-color: #56c0b5;
-  padding: 20px;
-  color: #fff;
+  background-color: #ffffff;
+  padding: 60px 20px;
+  color: #333;
 }
 .instructor-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -336,21 +389,11 @@ header h1 {
 .instructor-info h3 {
   font-size: 1.8rem;
   margin-bottom: 20px;
-  color: rgba(255,255,255,0.8);
+  color: #56c0b5;
 }
 .instructor-info p {
   font-size: 1.2rem;
   line-height: 1.8;
-}
-
-/* =====================
-   セミナーお申込みフォームセクション（背景： #56c0b5、コンパクト）
-===================== */
-.entry-section {
-  padding: 20px;
-  background-color: #56c0b5;
-  text-align: center;
-  color: #fff;
 }
 
 /* =====================
@@ -360,7 +403,7 @@ header h1 {
   .hero-left h1 {
     font-size: 2.5rem;
   }
-  .hero-left p, .lead-copy {
+  .hero-left p {
     font-size: 1.1rem;
   }
   .instructor-container {
@@ -374,3 +417,37 @@ header h1 {
     font-size: 1rem;
   }
 }
+
+/* =====================
+   セミナーお申込みフォームセクション
+===================== */
+.entry-section {
+  padding: 40px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* =====================
+   Footer（フッター）
+===================== */
+/* ※フッターは既存のコードのまま */
+注意点：
+
+HTML 側で概要セクション（.seminar-overview）と日時セクション（.seminar-details）の中身は、例えば以下のようにラップしてください。
+html
+コピーする
+<section class="seminar-overview">
+  <div class="inner-content">
+    <h2>セミナー概要</h2>
+    <p>ここにセミナーの概要説明を入れます。</p>
+  </div>
+</section>
+
+<section class="seminar-details">
+  <div class="inner-content">
+    <h2>日時・場所・参加方法</h2>
+    <div class="details-container">
+      <!-- 各 detail-item を配置 -->
+    </div>
+  </div>
+</section>
