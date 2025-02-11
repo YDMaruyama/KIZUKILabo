@@ -127,4 +127,60 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+<script>
+window.addEventListener('load', function() {
+  const canvas = document.querySelector('.particle-canvas');
+  const ctx = canvas.getContext('2d');
+
+  // Canvasサイズの設定
+  function resize() {
+    canvas.width = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+    initParticles(); // サイズ変更時に粒子の配置を再計算
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let particles = [];
+  // グリッド状に粒子を配置
+  function initParticles() {
+    particles = [];
+    const cols = 20;  // 横方向の粒子数
+    const rows = 10;  // 縦方向の粒子数
+    const spacingX = canvas.width / (cols - 1);
+    const spacingY = canvas.height / (rows - 1);
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        particles.push({
+          baseX: i * spacingX,
+          baseY: j * spacingY,
+          size: 2,
+          phase: Math.random() * Math.PI * 2  // 各粒子にランダムな位相を設定
+        });
+      }
+    }
+  }
+  initParticles();
+
+  let time = 0;
+  function animate() {
+    time += 0.05;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const p of particles) {
+      // サイン波で垂直方向に動かす
+      const amplitude = 10;          // 振幅（波の高さ）
+      const frequency = 0.05;        // 変動の速さ（横位置との相関）
+      const offset = amplitude * Math.sin(time + p.phase + p.baseX * frequency);
+      const x = p.baseX;
+      const y = p.baseY + offset;
+      ctx.beginPath();
+      ctx.arc(x, y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 123, 255, 0.6)';  // 粒の色（必要に応じて変更）
+      ctx.fill();
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+});
+</script>
 
