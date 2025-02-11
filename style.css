@@ -10,7 +10,12 @@ html, body {
   line-height: 1.8;
   overflow-x: hidden;
 }
-
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;  /* 画面全体をカバー */
+  padding: 20px;
+   
 /* Particle背景（全体背景のアニメーション） */
 #particles-js {
   position: absolute;
@@ -21,11 +26,7 @@ html, body {
   z-index: -1;
 }
 
-.content {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;  /* 画面全体をカバー */
-  padding: 20px;
+
 
    
 /* =====================
